@@ -21,8 +21,7 @@ public class Random_Music : MonoBehaviour
         set();
         if (!GetComponent<AudioSource>().playOnAwake)
         {
-            GetComponent<AudioSource>().clip = soundtrack[Random.Range(0, soundtrack.Length)];
-            GetComponent<AudioSource>().Play();
+            playMusic();
         }
     }
 
@@ -31,8 +30,7 @@ public class Random_Music : MonoBehaviour
     {
         if (!GetComponent<AudioSource>().isPlaying)
         {
-            GetComponent<AudioSource>().clip = soundtrack[Random.Range(0, soundtrack.Length)];
-            GetComponent<AudioSource>().Play();
+            playMusic();
             if (not_first_track == true)
             {
                 float r = Random.Range(0, 1.0f);
@@ -42,6 +40,17 @@ public class Random_Music : MonoBehaviour
             }
             not_first_track = true;
         }
+    }
+
+    public void playMusic()
+    {
+        GetComponent<AudioSource>().clip = soundtrack[Random.Range(0, soundtrack.Length - 1)];
+        GetComponent<AudioSource>().Play();
+    }
+    public void playPauseMusic()
+    {
+        GetComponent<AudioSource>().clip = soundtrack[soundtrack.Length - 1];
+        GetComponent<AudioSource>().Play();
     }
 }
 

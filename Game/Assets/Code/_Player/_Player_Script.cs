@@ -85,14 +85,17 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
     {
         // NEED A GAME OBJECT HANDLER VERY SOON
         //Controller.player_Moving();  ultimate_direction_input
-        Controller.ultimate_Player_Moving();
-        Controller.playerDash();
-        Controller.ultimate_Player_Shooting();
-        Controller.shooting();
-        //INPUT.input_charged_Shot_Ready();
-        Controller.charged_Shooting();
-        Controller.RecordDistance();
-        //wrap_around();
+        if (!Pause_Game.isPaused)
+        {
+            Controller.ultimate_Player_Moving();
+            Controller.playerDash();
+            Controller.ultimate_Player_Shooting();
+            Controller.shooting();
+            //INPUT.input_charged_Shot_Ready();
+            Controller.charged_Shooting();
+            Controller.RecordDistance();
+            //wrap_around();
+        }
     }
     // Update is called once per frame (for physics and fixed frameRate)
     public void FixedUpdate()

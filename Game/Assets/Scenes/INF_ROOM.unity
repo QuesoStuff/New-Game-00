@@ -815,6 +815,7 @@ Transform:
   m_Children:
   - {fileID: 1905014319}
   - {fileID: 227424691}
+  - {fileID: 1752358336}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1509,6 +1510,52 @@ MonoBehaviour:
   timer_Color_Half: {r: 0, g: 0, b: 0, a: 0}
   timer_Color_Quarter: {r: 0, g: 0, b: 0, a: 0}
   timer_End_Less_Than_60_SEC: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1752358335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1752358336}
+  - component: {fileID: 1752358337}
+  m_Layer: 0
+  m_Name: Game_Puase_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1752358336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752358335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.17776196, y: 0.23375955, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 474553618}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1752358337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752358335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a0ce98369acef4293221688eef9f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundBox: {fileID: 0}
+  audioScript: {fileID: 0}
 --- !u!1 &1763024688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610688535032207169, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
@@ -1931,6 +1978,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6d176c7493baee646bdc13d486f5c93a, type: 3}
   - {fileID: 8300000, guid: 14782d0aae94ee64195c1e5a6ab465d2, type: 3}
   - {fileID: 8300000, guid: 10cfaabf8c2921c429969d3bf8da9086, type: 3}
+  - {fileID: 8300000, guid: 34c23a5aafd52674ba0e6e1e0f4c506d, type: 3}
   camColor: {fileID: 0}
   not_first_track: 0
 --- !u!1 &1922801672 stripped
