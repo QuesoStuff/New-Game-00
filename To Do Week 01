@@ -1,0 +1,121 @@
+
+
+TO DO (January 24th -- 31st)
+Code Base: adjust functionality, and start sorting through the code
+
+
+--PLAYER--
+Main:
+- clean up
+Collision:
+- place ontrigger / onCollision inside here rather than main
+Color: 
+- Rename and add structure static functions
+Controller:
+- clean up
+- add UI functions
+Health:
+- add UI functions
+Input:
+- clean up
+Sound:
+- Make parent class and figure out static functions
+
+--ENEMY--
+Main: 
+- clean up
+Collision:
+- place ontrigger / onCollision inside here rather than main
+- add the collision for door to teleport
+- add the collision for wall to change color (Kamo phase)
+Color: 
+- Rename and add structure static functions
+Controller:
+- clean up
+Health:
+- add UI functions
+Input:
+- clean up
+Move:
+- clean up
+Sound:  XXX CREATE IT?
+- Make parent class and figure out static functions 
+
+-- Game Object --
+Bullet:
+- adjust code for big bullet shot
+- add trails for big bullet shot
+- add trail (fading trail) for regular shot
+- restructure Color code to access static functions
+- adjust the sfx sounds
+
+Door:
+- adjust the opacity code to be in Color static function
+- adjust the sfx sounds
+EXPLOSION: VV GOOD
+Item:
+- adjust the color code
+- adjust the sfx sounds
+Wall:
+- adjust the color code
+- adjust the sfx sounds
+
+--- General Game Stuff ---
+Camera Follow:
+- adjust the Color code
+- parse functionality to different code? Level Control?
+Clock:
+- Clean up
+Game Manager:
+- Clean up and add more functionality
+Level Controller Simple:
+- Clean up
+No Render:
+- add functionality to Main_Object script
+Pause_Play_Game:
+- Clean up code
+Random Music:
+- Turn this into parent Music function and add static methods for general use
+Respawn Script: ??? what is this for?
+- Clean up 
+Score Manager:
+- UI for display Score
+
+--- Main ---
+- Collision:
+Clean up
+- Color / Color_Static:
+- Restructure Code to have one universal Color class, where children can but don't need to exist
+Health:
+- Clean up
+Input:
+- Clean up
+Main Object Script:
+- Clean up
+- add no render method
+
+--- Interface ---
+Review them, adjust as needed
+--- Level ---
+Review after I'm done
+--- Save ---
+Good
+--- UI ---
+add the UI update function for score, hp, kills, shot count,....
+
+--- Random ---
+Player: 
+- Clean Up
+Enemy: 
+- Clean up
+Item:
+- Clean up
+Wall:
+- Clean up
+Random Level Gen:
+- add values to Constant & resolve code to work properly without the use of single object spawn functions
+- Have items flash or gradient color 
+
+
+
+
