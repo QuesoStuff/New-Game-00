@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 6605153828226046}
   - component: {fileID: 7636271736285568998}
   - component: {fileID: 1796613814326425956}
-  - component: {fileID: 1082728458059437793}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -183,8 +182,6 @@ MonoBehaviour:
   Moves: {fileID: 1796613814326425956}
   Collision: {fileID: 7636271736285568998}
   INPUT: {fileID: 4920585196984585267}
-  ex: {fileID: 0}
-  respawnScript: {fileID: 0}
   movementConfiguration: 0
 --- !u!114 &4920585196984585267
 MonoBehaviour:
@@ -316,18 +313,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 6299533319577820092}
---- !u!114 &1082728458059437793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9150384563979876283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784b25e4dec44af4ca54adcc77f07b61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rb2d: {fileID: 0}
-  spriterender: {fileID: 0}

@@ -41,9 +41,9 @@ public abstract class HEALTH : MonoBehaviour, I_HEALTH //, I_other_Interface
         if (HP <= 0)
         HP_Zero();
     }
-    public virtual void HP_damage(int HP_damage)
+    public virtual void HP_damage(int damage)
     {
-        HP -= HP_Damage;
+        HP -= damage;
         if (HP <= 0)
         HP_Zero();
     }

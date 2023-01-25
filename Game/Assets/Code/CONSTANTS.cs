@@ -70,8 +70,8 @@ public static class CONSTANTS //: MonoBehaviour
     public const int HP_DEFAULT_DAMAGE = 1;
     public const int HP_DEFAULT_HEALTH = 1;
     public const int HP_DEFAULT_MAX_HP_INCREASE = 1;
-    public const int HP_DEFAULT_STARTER_HP = 12;
-    public const int ENEMY_HP_MAX = 12;
+    public const int HP_DEFAULT_STARTER_HP = 15;
+    public const int ENEMY_HP_MAX = 15;
     public const int ENEMY_DAMAGE_MAX = 4;
 
 
@@ -171,7 +171,7 @@ public static class CONSTANTS //: MonoBehaviour
     public const float EXPLOSION_DURATION_MAX = 2.7f;
     // EXPLOSION PARTICLE AFFECT bullet
     public const int BULLET_SIM_SPEED_MIN = 2;
-    public const int BULLET_SIM_SPEED_MAX = 6;
+    public const int BULLET_SIM_SPEED_MAX = 8;
     public const float BULLET_SIM_START_SIZE_MIN = 0.07f;
     public const float BULLET_SIM_START_SIZE_MAX = 0.2f;
     public const int BULLET_PARTICLE_COUNT_MIN = 1;

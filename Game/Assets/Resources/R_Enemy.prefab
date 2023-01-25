@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 6605153828226046}
   - component: {fileID: 7636271736285568998}
   - component: {fileID: 1796613814326425956}
-  - component: {fileID: 1082728458059437793}
   - component: {fileID: 6458240571934168236}
   - component: {fileID: 3789738467301910198}
   m_Layer: 0
@@ -293,21 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 0}
---- !u!114 &1082728458059437793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9150384563979876283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784b25e4dec44af4ca54adcc77f07b61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rb2d: {fileID: 0}
-  spriterender: {fileID: 0}
 --- !u!114 &6458240571934168236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,8 +313,6 @@ MonoBehaviour:
   Moves: {fileID: 0}
   Collision: {fileID: 0}
   INPUT: {fileID: 0}
-  ex: {fileID: 0}
-  respawnScript: {fileID: 0}
   movementConfiguration: 0
 --- !u!82 &3789738467301910198
 AudioSource:

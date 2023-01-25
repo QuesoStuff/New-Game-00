@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Random_Level_Gen 
+public static class Random_Level_Gen
 {
 
     [SerializeField] internal static GameObject enemy;
@@ -10,6 +10,8 @@ public static class Random_Level_Gen
     [SerializeField] internal static GameObject wall;
     [SerializeField] internal static GameObject wall_moving;
     [SerializeField] internal static GameObject door;
+    [SerializeField] internal static Object explosion_ref;
+
 
 
     [SerializeField] internal static int enemy_Count;
@@ -73,6 +75,7 @@ public static class Random_Level_Gen
         wall = (GameObject)Resources.Load("wall");
         wall_moving = (GameObject)Resources.Load("R_Wall");
         door = (GameObject)Resources.Load("R_Door");
+        explosion_ref = Resources.Load("explosion_dash");
 
     }
 
@@ -126,6 +129,7 @@ public static class Random_Level_Gen
             else
                 enemy_position = rangedSpawn_target();
             GameObject new_Enemy = Object.Instantiate(enemy, enemy_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, enemy_position, Color.white);
             enemy_Count++;
             total_Count++;
             yield return new WaitForSeconds(wall_timer);
@@ -136,10 +140,14 @@ public static class Random_Level_Gen
             if (total_Count % 4 == 0 || total_Count % 5 == 0)
             {
                 GameObject new_Wall = Object.Instantiate(wall_moving, wall_position, Quaternion.identity);
+                EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
+
             }
             else
             {
                 GameObject new_Wall = Object.Instantiate(wall, wall_position, Quaternion.identity);
+                EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
+
             }
             wall_Count++;
             total_Count++;
@@ -149,6 +157,8 @@ public static class Random_Level_Gen
             else
                 item_position = randomSpawn();
             GameObject new_item = Object.Instantiate(item, item_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, item_position, Color.white);
+
             item_Count++;
             total_Count++;
             yield return new WaitForSeconds(door_timer);
@@ -157,6 +167,8 @@ public static class Random_Level_Gen
             else
                 door_position = randomSpawn();
             GameObject new_door = Object.Instantiate(door, door_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, door_position, Color.white);
+
             new_door.transform.rotation = Random.rotation;
             door_Count++;
             total_Count++;
@@ -174,6 +186,8 @@ public static class Random_Level_Gen
             else
                 enemy_position = rangedSpawn_target();
             GameObject new_Enemy = Object.Instantiate(enemy, enemy_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, enemy_position, Color.white);
+
             enemy_Count++;
             total_Count++;
             change_Time_enemy();
@@ -193,10 +207,13 @@ public static class Random_Level_Gen
             if (total_Count % 4 == 0 || total_Count % 5 == 0)
             {
                 GameObject new_Wall = Object.Instantiate(wall_moving, wall_position, Quaternion.identity);
+                EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
+
             }
             else
             {
                 GameObject new_Wall = Object.Instantiate(wall, wall_position, Quaternion.identity);
+                EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
             }
             wall_Count++;
             total_Count++;
@@ -215,6 +232,7 @@ public static class Random_Level_Gen
             else
                 item_position = randomSpawn();
             GameObject new_item = Object.Instantiate(item, item_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, item_position, Color.white);
             item_Count++;
             total_Count++;
             change_Time_item();
@@ -231,6 +249,7 @@ public static class Random_Level_Gen
             else
                 door_position = randomSpawn();
             GameObject new_door = Object.Instantiate(door, door_position, Quaternion.identity);
+            EXPLOSION.explosionCreateConsant(explosion_ref, door_position, Color.white);
             new_door.transform.rotation = Random.rotation;
             door_Count++;
             total_Count++;
@@ -254,15 +273,15 @@ public static class Random_Level_Gen
         var y = Random.Range(CONSTANTS.PLAYER_Y_AXIS_MIN, CONSTANTS.PLAYER_Y_AXIS_MAX);
         player_Transform = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).GetComponent<Transform>();
         player_position = player_Transform.position;
-        if ((x+y)%2 == 0)
+        if ((x + y) % 2 == 0)
         {
-        location.x = player_position.x + x; 
-        location.y = player_position.y + y;
+            location.x = player_position.x + x;
+            location.y = player_position.y + y;
         }
         else
         {
-        location.x = player_position.x - x; 
-        location.y = player_position.y - y;
+            location.x = player_position.x - x;
+            location.y = player_position.y - y;
         }
         // wrap it around
         location.x = (location.x % CONSTANTS.PLAYER_X_AXIS_MAX) + CONSTANTS.PLAYER_X_AXIS_MIN;

@@ -51,16 +51,16 @@ public class Player_Health : HEALTH
 
 
     }
-    public override void HP_damage(int HP_damage)
+    public override void HP_damage(int damage)
     {
-        HP -= HP_damage;
+        HP -= damage;
         if (HP <= 0)
         {
             HP_Total_Damage += HP;
             HP_Zero();
         }
         else
-            HP_Total_Damage += HP_damage;
+            HP_Total_Damage += damage;
     }
     //I_HP_Heal,
     public override void HP_heal()
@@ -114,6 +114,7 @@ public class Player_Health : HEALTH
     public override void HP_Zero()
     {
         // TRIGGER END
+        HP = 0;
         StartCoroutine(Level_Controller_Simple.death_Restart());
 
     }

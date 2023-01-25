@@ -14,7 +14,6 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal Player_Input INPUT;
     [SerializeField] internal Player_Sound SFX;
 
-    [SerializeField] internal EXPLOSION ex;
 
     [SerializeField] internal int killCount;
     [SerializeField] internal int bullet_shot_Count;
@@ -29,7 +28,6 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
         Color = GetComponent<Player_Color>();
         Controller = GetComponent<Player_Controller>();
         INPUT = GetComponent<Player_Input>();
-        ex = GetComponent<EXPLOSION>();
         SFX = GetComponent<Player_Sound>();
     }
 

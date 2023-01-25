@@ -16,7 +16,9 @@ public class Game_Manager_Script : MonoBehaviour
         Random_Level_Gen.set();
         StartCoroutine(Random_Level_Gen.spawnn_all());
         StartCoroutine(Random_Level_Gen.spawn_enemy());
-
+        StartCoroutine(Random_Level_Gen.spawn_item());
+        StartCoroutine(Random_Level_Gen.spawn_wall());
+        StartCoroutine(Random_Level_Gen.spawn_door());
     }
     void Awake()
     {

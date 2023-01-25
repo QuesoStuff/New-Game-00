@@ -9,7 +9,6 @@ public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal int HP_Added;
     [SerializeField] internal float positionOffset;
     [SerializeField] internal Object explosionRef;
-    [SerializeField] internal EXPLOSION ex;
     [SerializeField] internal BoxCollider2D col;
 
     //[SerializeField] internal RespawnScript respawnScript;
@@ -20,7 +19,6 @@ public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
     public void setRef()
     {
         explosionRef = Resources.Load("explosion_item");
-        ex = GetComponent<EXPLOSION>();
         //respawnScript = GameObject.Find(CONSTANTS.COLLISION_TAG_REPEAT).GetComponent<RespawnScript>();
         col = GetComponent<BoxCollider2D>();
     }
@@ -45,7 +43,7 @@ public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_PLAYER))
         {
             GetComponent<AudioSource>().Play();
-            ex.explosionCreate(explosionRef, transform.position, spriterender.color);
+            EXPLOSION.explosionCreate(explosionRef, transform.position, spriterender.color);
             //Destroy(gameObject,  GetComponent<AudioSource>().clip.length);
             Destroy(gameObject, 0.3f);
 

@@ -21,7 +21,6 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal float lifeTime;
     [SerializeField] internal Object explosionRef;
     [SerializeField] internal Object explosionRef2;
-    [SerializeField] internal EXPLOSION ex;
 
     [SerializeField] internal Vector2 bulletSpeed;
     [SerializeField] internal BoxCollider2D col;
@@ -30,7 +29,6 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     {
         explosionRef = Resources.Load("explosion_bullet_collision");
         explosionRef2 = Resources.Load("explosion_wall");
-        ex = GetComponent<EXPLOSION>();
         col = GetComponent<BoxCollider2D>();
 
     }
@@ -44,7 +42,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         BulletScript.bulletShotCount++;
         Destroy(gameObject, 4 * lifeTime);
         Invoke("changeCounter", lifeTime);
-        bullet_damge = 1;
+       // bullet_damge = 1;
         colorSet();
     }
     void colorSet()
@@ -97,12 +95,12 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
         {
             currColor = colorSpeed_2;
-            bullet_damge = 2;
+            bullet_damge = bullet_damge * 2;
         }
         else
         {
             currColor = colorSpeed_3;
-            bullet_damge = 3;
+            bullet_damge = bullet_damge *3;
         }
         spriterender.color = currColor;
     }
@@ -131,7 +129,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     {
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
         {
-            ex.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
+            EXPLOSION.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
             spriterender.color = currColor;
             bulletSpeed = new Vector2(x / 2, y / 2);
             Destroy(gameObject, 1.5f);
@@ -143,24 +141,40 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         if (other.gameObject.tag == CONSTANTS.COLLISION_TAG_ENEMY)
         {
             GetComponent<AudioSource>().Play();
-            ex.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
-            //Destroy(gameObject,  GetComponent<AudioSource>().clip.length);
-            Destroy(gameObject, 0.3f);
+            EXPLOSION.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
+            Destroy(gameObject,  GetComponent<AudioSource>().clip.length);
+            //Destroy(gameObject, 0.3f);
 
         }
 
 
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
         {
-            ex.explosionCreate(explosionRef2, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
+            EXPLOSION.explosionCreate(explosionRef2, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
             spriterender.color = other.gameObject.GetComponent<SpriteRenderer>().color;
             bulletSpeed = new Vector2(-x / 8, -y / 8);
         }
         else if (other.CompareTag(CONSTANTS.COLLISION_TAG_ITEM))
         {
-            var temp = x;
-            x = -2 * y;
-            y = -temp / 2;
+            var top = Random.Range(0, CONSTANTS.BULLET_SIM_SPEED_MAX);
+            var bottom = Random.Range(1, CONSTANTS.BULLET_SIM_SPEED_MAX);
+            var factor = top / bottom;
+            if (factor % 2 == 0)
+            {
+                bulletSpeed = new Vector2(factor * y, factor * x);
+                return;
+            }
+            if (top % 2 == 1)
+                x = -x;
+            if (bottom % 2 == 1)
+                y = -y;
+            if (factor % 4 == 0)
+            {
+                var yTemp = y;
+                y = x;
+                x = yTemp;
+            }
+            bulletSpeed = new Vector2(factor * x, factor * y);
         }
     }
 

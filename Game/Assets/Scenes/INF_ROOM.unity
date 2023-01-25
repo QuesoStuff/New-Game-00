@@ -2168,6 +2168,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2104860137}
     - target: {fileID: -1546470819569112469, guid: 1448c538316c9bb4e85d06ae07f5a94f, type: 3}
+      propertyPath: mainScript
+      value: 
+      objectReference: {fileID: 2104860124}
+    - target: {fileID: -1546470819569112469, guid: 1448c538316c9bb4e85d06ae07f5a94f, type: 3}
       propertyPath: playAudio_dash
       value: 
       objectReference: {fileID: 2104860137}

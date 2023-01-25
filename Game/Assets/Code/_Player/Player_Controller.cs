@@ -203,7 +203,7 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
     public void ultimate_Player_Moving()
     {
         player_Moving();
-        //player_Moving_Diagnol(); for now we will keep it straigth
+        player_Moving_Diagnol();
     }
     public void player_Moving()
     {
@@ -309,7 +309,7 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
             bulletObject.GetComponent<BulletScript>().x = (float)x / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
             bulletObject.GetComponent<BulletScript>().y = (float)y / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
             mainScript.bullet_shot_Count++;
-            bulletObject.GetComponent<BulletScript>().bullet_damge = 10;
+            //bulletObject.GetComponent<BulletScript>().bullet_damge = 7;
             // for debug purposes
         }
     }
@@ -340,7 +340,7 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
         StartCoroutine(mainScript.Color.dash());
         isDashing = true;
         //mainScript.ex.explosionCreate(explosion_ref, transform.position, spriterender.color);
-        mainScript.ex.explosionCreateConsant(explosion_ref, transform.position, spriterender.color);
+        EXPLOSION.explosionCreateConsant(explosion_ref, transform.position, spriterender.color);
         //rb2d.AddForce(dash * rb2d.velocity);
         currSpeed_down = currSpeed_up = currSpeed_left = currSpeed_right = dashSpeed;
         currSpeed_down_diagonal = currSpeed_up_diagonal = currSpeed_left_diagonal = currSpeed_right_diagonal = dashSpeed / Mathf.Sqrt(2.0f);

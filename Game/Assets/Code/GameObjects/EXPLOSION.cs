@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EXPLOSION : MAIN_GAME_OBJECT_SCRIPT
+public static class EXPLOSION 
 {
-    public void explosionCreate(Object ObjRef, Vector3 position, Color startColor)
+    public static void explosionCreate(Object ObjRef, Vector3 position, Color startColor)
     {
-        GameObject explosionObject = (GameObject)Instantiate(ObjRef);
+        GameObject explosionObject = (GameObject)Object.Instantiate(ObjRef);
         explosionObject.transform.position = position;
         ParticleSystem explosion = explosionObject.GetComponent<ParticleSystem>();
         explosion.Stop();
@@ -22,9 +22,9 @@ public class EXPLOSION : MAIN_GAME_OBJECT_SCRIPT
         main.startColor = startColor;
         explosion.Play();
     }
-    public void explosionCreateConsant(Object ObjRef, Vector3 position, Color startColor)
+    public static void explosionCreateConsant(Object ObjRef, Vector3 position, Color startColor)
     {
-        GameObject explosionObject = (GameObject)Instantiate(ObjRef);
+        GameObject explosionObject = (GameObject)Object.Instantiate(ObjRef);
         explosionObject.transform.position = position;
         ParticleSystem explosion = explosionObject.GetComponent<ParticleSystem>();
         explosion.Stop();

@@ -20,7 +20,7 @@ public class WallScript : MAIN_GAME_OBJECT_SCRIPT
     {
         set();
         resetColor();
-        COLOR_STATIC.setSpriteRenderColor(ref spriterender , originalColor);
+        //COLOR_STATIC.setSpriteRenderColor(ref spriterender , originalColor);
     }
 
     // THIS IS LAZY I SHOULD NOT BE DOING THIS

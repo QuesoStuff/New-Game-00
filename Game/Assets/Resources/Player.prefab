@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 5486739754308723632}
   - component: {fileID: 1392282271773727780}
   - component: {fileID: 3824425998929352503}
-  - component: {fileID: 8476194500900307520}
   - component: {fileID: -4846398198327074567}
   - component: {fileID: -1546470819569112469}
   m_Layer: 0
@@ -320,7 +319,6 @@ MonoBehaviour:
   Controller: {fileID: 5486739754308723632}
   INPUT: {fileID: 0}
   SFX: {fileID: 0}
-  ex: {fileID: 0}
   killCount: 0
   bullet_shot_Count: 0
   total_Distance_traveled: 0
@@ -441,7 +439,6 @@ MonoBehaviour:
   HP_Damage: 0
   HP_Heal: 0
   mainScript: {fileID: 5030580025073115190}
-  deathScript: {fileID: 0}
   HP_Total_Damage: 0
   HP_Total_Heal: 0
 --- !u!114 &3824425998929352503
@@ -468,21 +465,6 @@ MonoBehaviour:
   doubleTap: 0
   playerScript: {fileID: 0}
   chargeReady: 0
---- !u!114 &8476194500900307520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2219647011742250539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 784b25e4dec44af4ca54adcc77f07b61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rb2d: {fileID: 0}
-  spriterender: {fileID: 0}
 --- !u!82 &-4846398198327074567
 AudioSource:
   m_ObjectHideFlags: 0
@@ -595,9 +577,11 @@ MonoBehaviour:
   soundtrack:
   - {fileID: 8300000, guid: 86e3be67591ee204789e359f4fb9ab3f, type: 3}
   - {fileID: 8300000, guid: 1fb01b98a6799f246ba3de4e0b6df8be, type: 3}
-  - {fileID: 8300000, guid: c3c8a827480d76045a65d04c16b765a2, type: 3}
-  - {fileID: 8300000, guid: 21be4d655f4d2f44f9403b9e02e5706f, type: 3}
-  - {fileID: 8300000, guid: 6f90c8b16e41da7499d381090c81adb3, type: 3}
+  - {fileID: 8300000, guid: bb6172ff549a7b1418bee895d9b163ce, type: 3}
+  - {fileID: 8300000, guid: 544382d4c1f8c0746827572bdb4b10b2, type: 3}
+  - {fileID: 8300000, guid: 6738ae9624bfcc2448e2bd7049df65a0, type: 3}
+  - {fileID: 8300000, guid: 32256b51030bd654b8c5dae048ae1c40, type: 3}
+  - {fileID: 8300000, guid: 50bcae9222937734e877bf32d996383a, type: 3}
   playAudio: {fileID: 0}
 --- !u!1 &8218081876187926600
 GameObject:

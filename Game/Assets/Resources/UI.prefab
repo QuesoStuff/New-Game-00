@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 938307523416899398}
   - component: {fileID: 938307523416899396}
   m_Layer: 5
-  m_Name: Distance Traveled
+  m_Name: UI Distance Traveled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,19 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a4496e912973c45aca0064054a8c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 938307523416899398}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
-  distance: 0
-  RATE: 0
 --- !u!1 &938307523696892253
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,9 +210,9 @@ GameObject:
   - component: {fileID: 938307523696892252}
   - component: {fileID: 938307523696892241}
   - component: {fileID: 938307523696892242}
-  - component: {fileID: 938307523696892240}
+  - component: {fileID: 136810399058566561}
   m_Layer: 5
-  m_Name: enemy kill count
+  m_Name: UI enemy kill count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +280,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Kill
---- !u!114 &938307523696892240
+--- !u!114 &136810399058566561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,20 +289,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 938307523696892253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a31452e78da6f4882cf3dc3263368f, type: 3}
+  m_Script: {fileID: 11500000, guid: f1ec8f323d4e7354ea11d296cc21180b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
 --- !u!1 &938307524924024506
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,9 +303,9 @@ GameObject:
   - component: {fileID: 938307524924024505}
   - component: {fileID: 938307524924024510}
   - component: {fileID: 938307524924024511}
-  - component: {fileID: 938307524924024509}
+  - component: {fileID: 1617981928194175759}
   m_Layer: 5
-  m_Name: Score
+  m_Name: UI Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +373,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Score
---- !u!114 &938307524924024509
+--- !u!114 &1617981928194175759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,27 +382,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 938307524924024506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf564311fb22f64dba45943aee66cf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 31c3b8aedd418d14d90c5081293ef763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
-  min: 0
-  sec: 0
-  flashTImer: 0
-  currTime: 0
-  timer_Color_Half: {r: 0, g: 0, b: 0, a: 0}
-  timer_Color_Quarter: {r: 0, g: 0, b: 0, a: 0}
-  timer_End_Less_Than_60_SEC: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &938307524942708600
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,9 +396,9 @@ GameObject:
   - component: {fileID: 938307524942708607}
   - component: {fileID: 938307524942708604}
   - component: {fileID: 938307524942708605}
-  - component: {fileID: 3532920524372146134}
+  - component: {fileID: 4800855872630006796}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: UI Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,7 +466,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Clock
---- !u!114 &3532920524372146134
+--- !u!114 &4800855872630006796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -517,20 +475,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 938307524942708600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf564311fb22f64dba45943aee66cf4, type: 3}
+  m_Script: {fileID: 11500000, guid: a2f23337c8b245b4599156eb42e61132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
   min: 0
   sec: 0
   flashTImer: 0
@@ -551,7 +498,7 @@ GameObject:
   - component: {fileID: 1734660520423134360}
   - component: {fileID: 4686696917239006374}
   m_Layer: 5
-  m_Name: bullet Count
+  m_Name: UI bullet Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,19 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c13a983ca4756f45b93a28a6e25f612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 1734660520423134360}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
-  bulletCount: 0
-  Color_bulletCount_100: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5063032534983892139
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +591,7 @@ GameObject:
   - component: {fileID: 4154048217061246948}
   - component: {fileID: 8035487324194087619}
   m_Layer: 5
-  m_Name: HP
+  m_Name: UI HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,20 +671,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ccbbbafa0b53345a63ab99f7ce672d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  displayColor: {r: 0, g: 0, b: 0, a: 0}
-  newDisplayColor: {r: 0, g: 0, b: 0, a: 0}
-  saveFile:
-    MAX_SCORE: 0
-    MAX_DISTANCE: 0
-    MAX_KILLS: 0
-    TIME_LEFT: 0
-    MAX_BULLET_COUNT: 0
-  newSaveData: 0
-  playerScript: {fileID: 0}
-  currHP: 0
-  maxHP: 0
-  HP_Color_Full: {r: 0, g: 0, b: 0, a: 0}
-  HP_Color_Normal: {r: 0, g: 0, b: 0, a: 0}
-  HP_Color_Half: {r: 0, g: 0, b: 0, a: 0}
-  HP_Color_Danger: {r: 0, g: 0, b: 0, a: 0}

@@ -40,9 +40,9 @@ public class Enemy_Health : HEALTH
             mainScript.Color.whiteFlash();
         //StartCoroutine(mainScript.Color.whiteFlash()); 
     }
-    public override void HP_damage(int HP_damage)
+    public override void HP_damage(int damage)
     {
-        HP -= HP_Damage;
+        HP -= damage;
         if (HP <= 0)
             HP_Zero();
         else
@@ -58,7 +58,7 @@ public class Enemy_Health : HEALTH
         mainScript.spriterender.color = Color.white;
         GetComponent<AudioSource>().Play();
         Destroy(gameObject, GetComponent<AudioSource>().clip.length);
-        mainScript.ex.explosionCreate(explosionRef, transform.position, mainScript.spriterender.color);
+        EXPLOSION.explosionCreate(explosionRef, transform.position, mainScript.spriterender.color);
         // to make the enemy vanish
         mainScript.spriterender.enabled = false;
     }
