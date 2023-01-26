@@ -71,9 +71,9 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     void Start()
     {
         set();
+        bullet_shape();
         bullet_color();
         bullet_speed();
-        bullet_shape();
         bullet_damage();
         //laser_create(4, 4);
     }
@@ -103,16 +103,32 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     }
     void bullet_shape()
     {
-        if (BulletScript.bulletShotCount < 0)
+        Debug.Log("count:");
+        Debug.Log((bulletShotCount));
+
+        if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_PERFECT)
         {
+            Debug.Log("0");
             laser_create(3.5f, 3.5f);
         }
-        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0) { }
-        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1) { }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
+        {
+            Debug.Log("1");
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1)
+        {
+            Debug.Log("2");
+        }
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
+        {
+            Debug.Log("3");
             laser_create(1.15f, 1.15f);
+        }
         else
+        {
             laser_create(1.15f, 1.15f);
+            Debug.Log("4");
+        }
     }
     void bullet_speed()
     {
@@ -158,12 +174,26 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     }
     void bullet_damage()
     {
-        if (BulletScript.bulletShotCount < 0)
+        if (BulletScript.bulletShotCount < 2)
         {
             bullet_damge = bullet_damge * 3;
         }
-        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0) { }
-        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1) { }
+        else if (BulletScript.bulletShotCount < 3)
+        {
+            bullet_damge = bullet_damge + 1;
+        }
+        //else if (BulletScript.bulletShotCount < 4)
+        //{
+        //    bullet_damge = bullet_damge + 2;
+        //}
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
+        {
+
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1)
+        {
+            bullet_damge = bullet_damge + 2;
+        }
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
             bullet_damge = bullet_damge * 2;
         else
@@ -237,7 +267,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
 
                 // these keep the things STUCK
                 //rb2d.velocity = new Vector2 ( bulletSpeed.x * top * x , bulletSpeed.y * bottom * y) - new Vector2 ( bulletSpeed.x * bottom * x , bulletSpeed.y * top * y);
-                rb2d.velocity = new Vector2 (  bottom * rb2d.velocity.x,  top * rb2d.velocity.y );
+                rb2d.velocity = new Vector2(bottom * rb2d.velocity.x, top * rb2d.velocity.y);
                 return;
             }
             if (top % 2 == 1)

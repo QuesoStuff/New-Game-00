@@ -226,7 +226,6 @@ public static class CONSTANTS
 
     // BULLET TYPE COUNT LIMIT
     public const int BULLET_COUNT_PERFECT = 4;
-
     public const int BULLET_COUNT_0 = 9;
     public const int BULLET_COUNT_1 = 15;
     public const int BULLET_COUNT_2 = 20;
