@@ -81,6 +81,7 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
     // Update is called once per frame
     public void Update()
     {
+
         // NEED A GAME OBJECT HANDLER VERY SOON
         //Controller.player_Moving();  ultimate_direction_input
         if (!Pause_Game.isPaused)

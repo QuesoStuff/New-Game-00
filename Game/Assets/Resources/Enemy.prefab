@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6605153828226046}
   - component: {fileID: 7636271736285568998}
   - component: {fileID: 1796613814326425956}
+  - component: {fileID: -5946577469824781198}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -182,6 +183,7 @@ MonoBehaviour:
   Moves: {fileID: 1796613814326425956}
   Collision: {fileID: 7636271736285568998}
   INPUT: {fileID: 4920585196984585267}
+  Sound: {fileID: 0}
   movementConfiguration: 0
 --- !u!114 &4920585196984585267
 MonoBehaviour:
@@ -313,3 +315,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 6299533319577820092}
+--- !u!114 &-5946577469824781198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150384563979876283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a021e0853ad104c9a841255552f8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_array:
+  - {fileID: 8300000, guid: 119841b5b8af8404ebca059249034808, type: 3}
+  audio: {fileID: 0}

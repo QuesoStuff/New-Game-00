@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CONSTANTS //: MonoBehaviour
+public static class CONSTANTS 
 {
     // CURRENTLY IN USE 
     // NOT YET IN USE
@@ -225,10 +225,12 @@ public static class CONSTANTS //: MonoBehaviour
     public const int PLAYER_Y_AXIS_MAX = 50;  //31
 
     // BULLET TYPE COUNT LIMIT
-    public const int BULLET_COUNT_0 = 7;
+    public const int BULLET_COUNT_PERFECT = 4;
+
+    public const int BULLET_COUNT_0 = 9;
     public const int BULLET_COUNT_1 = 15;
-    public const int BULLET_COUNT_2 = 25;
-    public const int BULLET_COUNT_3 = 30;
+    public const int BULLET_COUNT_2 = 20;
+    public const int BULLET_COUNT_3 = 25;
 
 
 

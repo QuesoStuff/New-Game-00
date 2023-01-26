@@ -42,13 +42,13 @@ public class Score_Display : GENERIC_UI
     void textColor()
     {
         if (score % 10 == 0 && score > 0)
-        setTextColor(Color_Score_10);
+            setTextColor(Color_Score_10);
         else
             setTextColor(displayColor);
     }
     void UI_UPDATE_High_Score()
     {
         if (score > saveFile.MAX_SCORE && saveFile.MAX_SCORE > 0)
-        displayColor = newDisplayColor;
+            displayColor = newDisplayColor;
     }
 }

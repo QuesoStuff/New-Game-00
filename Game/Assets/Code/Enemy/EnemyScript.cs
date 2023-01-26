@@ -11,10 +11,13 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal Enemy_Moves Moves;
     [SerializeField] internal Enemy_Collision Collision;
     [SerializeField] internal Enemy_Input INPUT;
+    [SerializeField] internal Enemy_Sound Sound;
 
     [SerializeField] internal delegate void funct_ptr();
     [SerializeField] internal funct_ptr moveFunct_ptr;
     [SerializeField] internal int movementConfiguration;
+
+
 
     // Start is called before the first frame update
     /*
@@ -36,7 +39,7 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
         Moves = GetComponent<Enemy_Moves>();
         Collision = GetComponent<Enemy_Collision>();
         INPUT = GetComponent<Enemy_Input>();
-
+        Sound = GetComponent<Enemy_Sound>();
     }
 
     public new void set()
@@ -50,6 +53,7 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
         Moves.set();
         Collision.set();
         INPUT.set();
+        Sound.set();
         movementConfiguration = Random.Range(1, CONSTANTS.ENEMY_MOVE_COUNT) % 4;
         //speed = Random.Range(1, CONSTANTS.MOVE_MAX_ENEMY_SPEED);
         //RESET_SPEED = speed;

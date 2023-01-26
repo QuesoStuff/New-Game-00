@@ -74,7 +74,7 @@ public class Timer_Display : GENERIC_UI
     }
     void UI_UPDATE_High_Score()
     {
-        if (currTime < saveFile.TIME_LEFT && saveFile.TIME_LEFT < Clock.START_TIME)
+        if (currTime < saveFile.TIME_LEFT && saveFile.TIME_LEFT < Clock.CLOCK_COUNTDOWM_START)
         {
             //newDisplayColor = color.green; DEFAULT IS YELLOW
             newSaveData = true;

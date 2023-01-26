@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6915484571363394509}
   - component: {fileID: -4523193560024834575}
   - component: {fileID: -7753194076372827979}
+  - component: {fileID: -3052237013213692330}
   m_Layer: 0
   m_Name: bigBullet
   m_TagString: bullet
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6915484571363394507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.106, y: -11.776999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -173,6 +174,8 @@ MonoBehaviour:
   lifeTime: 0
   explosionRef: {fileID: 1687099552451913201, guid: c6a481e015da513448a0dd2b17642b87, type: 3}
   explosionRef2: {fileID: 1687099552451913201, guid: 119a313bb18aae84f96faf6a55385711, type: 3}
+  explosionRef3: {fileID: 0}
+  explosionRef4: {fileID: 0}
   bulletSpeed: {x: 0, y: 0}
   col: {fileID: 0}
 --- !u!82 &-7753194076372827979
@@ -271,3 +274,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3052237013213692330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915484571363394507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c245a8757fbde35438e9868cde2f3993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_array:
+  - {fileID: 8300000, guid: a7360259f16a6f7478a1b0d5f253fb14, type: 3}
+  audio: {fileID: 0}

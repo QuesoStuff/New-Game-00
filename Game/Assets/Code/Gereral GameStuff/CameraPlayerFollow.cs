@@ -31,7 +31,7 @@ public class CameraPlayerFollow : MonoBehaviour
         setComponent();
         fadeDuration = 4.8f;
         //timeTheFadeStarted = Time.time;
-        timeTheFadeStarted = Time.time ;
+        timeTheFadeStarted = Time.time;
         Color1 = new Color(0.9339623f, 0.5850481f, 0.5850481f, 1); //wall
         Color2 = new Color(0.238392f, 0.2047437f, 0.4056604f, 0); //background
         ZOOM = 10;
@@ -51,19 +51,19 @@ public class CameraPlayerFollow : MonoBehaviour
     {
         set();
         ColorWall();
+        Camera.main.orthographicSize = ZOOM;
     }
     public void Update()
     {
-                Camera.main.orthographicSize  = ZOOM;
         Vector3 playerPosition = new Vector3(target.position.x, target.position.y + y_Offset, z_CamValue);
         transform.position = Vector3.Slerp(transform.position, playerPosition, followSpeed * Time.deltaTime);
         //Camera.main.backgroundColor = Color.Lerp(Color1, Color2, (Time.time) / fadeDuration);
-        if (fadeDuration > Time.deltaTime)
-        {
-            Camera.main.backgroundColor = Color.Lerp( Camera.main.backgroundColor, Color2, Time.deltaTime / fadeDuration);
-            fadeDuration -= Time.deltaTime;
-        }
- 
+        // if (fadeDuration > Time.deltaTime)
+        // {
+        //    Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Color2, Time.deltaTime / fadeDuration);
+        //    fadeDuration -= Time.deltaTime;
+        //}
+
 
     }
 
@@ -79,7 +79,42 @@ public class CameraPlayerFollow : MonoBehaviour
         Color2 = newColor;
         fadeDuration = 4.8f;
     }
+    public static IEnumerator transitionColor_No_Update(float fadeDuration, Color oldColor, Color newColor)
+    {
+        while (fadeDuration > Time.deltaTime)
+        {
+            Camera.main.backgroundColor = Color.Lerp(oldColor, newColor, Time.deltaTime / fadeDuration);
+            fadeDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        Camera.main.backgroundColor = newColor;
+        yield return null;
+    }
 
+    public static IEnumerator transitionColor_Background_No_Update(float fadeDuration, Color newColor)
+    {
+
+        fadeDuration = 4.8f;
+        while (fadeDuration > Time.deltaTime)
+        {
+            Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, newColor, Time.deltaTime / fadeDuration);
+            fadeDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+    }
+    public IEnumerator transitionColor_No_Update(Color newColor)
+    {
+        Color1 = Camera.main.backgroundColor;
+        Color2 = newColor;
+        fadeDuration = 4.8f;
+        while (fadeDuration > Time.deltaTime)
+        {
+            Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Color2, Time.deltaTime / fadeDuration);
+            fadeDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
 }
 
 

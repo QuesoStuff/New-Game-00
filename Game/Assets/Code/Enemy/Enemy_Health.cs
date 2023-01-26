@@ -56,8 +56,9 @@ public class Enemy_Health : HEALTH
         mainScript.Controller.speed /= 4;
         GetComponent<BoxCollider2D>().enabled = false;
         mainScript.spriterender.color = Color.white;
-        GetComponent<AudioSource>().Play();
-        Destroy(gameObject, GetComponent<AudioSource>().clip.length);
+        //GetComponent<AudioSource>().Play();
+        mainScript.Sound.audio_play(0);
+        Destroy(gameObject, mainScript.Sound.GetComponent<AudioSource>().clip.length);
         EXPLOSION.explosionCreate(explosionRef, transform.position, mainScript.spriterender.color);
         // to make the enemy vanish
         mainScript.spriterender.enabled = false;

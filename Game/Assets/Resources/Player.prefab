@@ -573,6 +573,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cdd0e95471a594092269276a5bf0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio_array:
+  - {fileID: 8300000, guid: 86e3be67591ee204789e359f4fb9ab3f, type: 3}
+  - {fileID: 8300000, guid: 1fb01b98a6799f246ba3de4e0b6df8be, type: 3}
+  - {fileID: 8300000, guid: bb6172ff549a7b1418bee895d9b163ce, type: 3}
+  - {fileID: 8300000, guid: 544382d4c1f8c0746827572bdb4b10b2, type: 3}
+  - {fileID: 8300000, guid: 6738ae9624bfcc2448e2bd7049df65a0, type: 3}
+  - {fileID: 8300000, guid: 32256b51030bd654b8c5dae048ae1c40, type: 3}
+  - {fileID: 8300000, guid: 50bcae9222937734e877bf32d996383a, type: 3}
+  audio: {fileID: 0}
   mainScript: {fileID: 0}
   soundtrack:
   - {fileID: 8300000, guid: 86e3be67591ee204789e359f4fb9ab3f, type: 3}

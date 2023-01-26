@@ -59,4 +59,3 @@ public class HP_Display : GENERIC_UI
         setTextColor();
     }
 }
-

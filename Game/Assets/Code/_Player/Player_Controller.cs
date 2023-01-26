@@ -287,6 +287,7 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
             bulletObject.GetComponent<BulletScript>().x = x;
             bulletObject.GetComponent<BulletScript>().y = y;
             mainScript.bullet_shot_Count++;
+            //StartCoroutine(resizeScale(0.25f, 0, Mathf.Min(transform.localScale.x, transform.localScale.y)));
             if (Random.Range(0.0f, 1.0f) > 0.5f)
                 mainScript.SFX.audioShoot_0();
             else
@@ -306,11 +307,15 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
             var y = bullet_y;
             bulletPosition = transform.position;
             GameObject bulletObject = (GameObject)Instantiate(chargedBullet_ref, bulletPosition, Quaternion.identity);
-            bulletObject.GetComponent<BulletScript>().x = (float)x / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
-            bulletObject.GetComponent<BulletScript>().y = (float)y / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
+            BulletScript modifyBullet = bulletObject.GetComponent<BulletScript>();
+            modifyBullet.increaseSize(100, 0.00001f);
+            modifyBullet.x = (float)x / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
+            modifyBullet.y = (float)y / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
             mainScript.bullet_shot_Count++;
             //bulletObject.GetComponent<BulletScript>().bullet_damge = 7;
             // for debug purposes
+            StartCoroutine(modifyBullet.resizeScale(0.75f, 0, Mathf.Min(bulletObject.transform.localScale.x, bulletObject.transform.localScale.y)));
+
         }
     }
 

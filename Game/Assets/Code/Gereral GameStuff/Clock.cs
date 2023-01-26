@@ -5,14 +5,24 @@ using UnityEngine;
 public class Clock : MonoBehaviour
 {
     [SerializeField] internal static float CurrentTime; // in secs
-    [SerializeField] internal static int START_TIME = CONSTANTS.TIME_IN_LEVEL;
+    [SerializeField] internal static int CLOCK_TIMER_LIMIT; // in secs
+    [SerializeField] internal static int CLOCK_COUNTDOWM_START = CONSTANTS.TIME_IN_LEVEL; // in secs
+
 
 
 
     // Use this for initialization
     public void set()
     {
-        CurrentTime = START_TIME;
+        setCountDown();
+    }
+    public void setTimer()
+    {
+        CurrentTime = 0;
+    }
+    public void setCountDown()
+    {
+        CurrentTime = CLOCK_COUNTDOWM_START;
     }
     public void Start()
     {
@@ -20,14 +30,24 @@ public class Clock : MonoBehaviour
     }
     public void Update()
     {
-        updateTIme();
+        clock_countDown_update();
     }
     // Update is called once per frame
-    public void updateTIme()
+    public void clock_countDown_update()
     {
         if (CurrentTime > 0)
         {
             CurrentTime -= Time.deltaTime;
+        }
+        else
+            // may not be possible
+            StartCoroutine(Level_Controller_Simple.timer_end_Restart());
+    }
+    public void clock_timer_update()
+    {
+        if (CurrentTime < CLOCK_TIMER_LIMIT)
+        {
+            CurrentTime += Time.deltaTime;
         }
         else
             // may not be possible

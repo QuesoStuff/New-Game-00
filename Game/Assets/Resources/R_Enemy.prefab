@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1796613814326425956}
   - component: {fileID: 6458240571934168236}
   - component: {fileID: 3789738467301910198}
+  - component: {fileID: 8743995758281502761}
   m_Layer: 0
   m_Name: R_Enemy
   m_TagString: enemy
@@ -313,6 +314,7 @@ MonoBehaviour:
   Moves: {fileID: 0}
   Collision: {fileID: 0}
   INPUT: {fileID: 0}
+  Sound: {fileID: 0}
   movementConfiguration: 0
 --- !u!82 &3789738467301910198
 AudioSource:
@@ -410,3 +412,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8743995758281502761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150384563979876283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a021e0853ad104c9a841255552f8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_array:
+  - {fileID: 8300000, guid: 119841b5b8af8404ebca059249034808, type: 3}
+  audio: {fileID: 3789738467301910198}

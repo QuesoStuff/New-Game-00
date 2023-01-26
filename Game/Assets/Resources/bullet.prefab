@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6915484571363394509}
   - component: {fileID: -4523193560024834575}
   - component: {fileID: 898812621253626169}
+  - component: {fileID: -4989367190362821228}
   m_Layer: 0
   m_Name: bullet
   m_TagString: bullet
@@ -271,3 +272,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4989367190362821228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915484571363394507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c245a8757fbde35438e9868cde2f3993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_array:
+  - {fileID: 8300000, guid: a7360259f16a6f7478a1b0d5f253fb14, type: 3}
+  audio: {fileID: 0}

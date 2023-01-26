@@ -21,6 +21,10 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal float lifeTime;
     [SerializeField] internal Object explosionRef;
     [SerializeField] internal Object explosionRef2;
+    [SerializeField] internal Object explosionRef3;
+    [SerializeField] internal Object explosionRef4;
+
+
 
     [SerializeField] internal Vector2 bulletSpeed;
     [SerializeField] internal BoxCollider2D col;
@@ -29,9 +33,13 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     {
         explosionRef = Resources.Load("explosion_bullet_collision");
         explosionRef2 = Resources.Load("explosion_wall");
-        col = GetComponent<BoxCollider2D>();
+        explosionRef3 = Resources.Load("hit,blood");
+        explosionRef4 = Resources.Load("explosion_dash");
 
+
+        col = GetComponent<BoxCollider2D>();
     }
+
     public new void set()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_BULLET;
@@ -42,7 +50,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         BulletScript.bulletShotCount++;
         Destroy(gameObject, 4 * lifeTime);
         Invoke("changeCounter", lifeTime);
-       // bullet_damge = 1;
+        // bullet_damge = 1;
         colorSet();
     }
     void colorSet()
@@ -52,18 +60,61 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         colorSpeed_2 = new Color(0.9056f, 0.6538f, 0.0811f, 1); //orange
         colorSpeed_3 = new Color(0.9056f, 0.2959f, 0.0811f, 1); //red
     }
+
+
+    /*
+                if ((x == -1 && y == 0) || (x == 1 && yas == 0))
+                laser_horizontal();
+            else if ((x == 0 && y == -1) || (x == 0 && yas == 1))
+                laster_vertical();
+    */
     void Start()
     {
         set();
-        bulletColor();
-        bullet_Direction();
+        bullet_color();
+        bullet_speed();
+        bullet_shape();
+        bullet_damage();
+        //laser_create(4, 4);
     }
     void changeCounter()
     {
         if (bulletShotCount > 0)
             BulletScript.bulletShotCount--;
     }
-    void bullet_Direction()
+    void laser_horizontal(float scale)
+    {
+        float x = transform.localScale.x;
+        float y = transform.localScale.y;
+        changeScale(scale * x, 1 * y);
+    }
+    void laster_vertical(float scale)
+    {
+        float x = transform.localScale.x;
+        float y = transform.localScale.y;
+        changeScale(1 * x, scale * y);
+    }
+    void laser_create(float scale_H, float scale_V)
+    {
+        if ((x == -1 && y == 0) || (x == 1 && y == 0))
+            laser_horizontal(scale_H);
+        else if ((x == 0 && y == -1) || (x == 0 && y == 1))
+            laster_vertical(scale_V);
+    }
+    void bullet_shape()
+    {
+        if (BulletScript.bulletShotCount < 0)
+        {
+            laser_create(3.5f, 3.5f);
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0) { }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1) { }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
+            laser_create(1.15f, 1.15f);
+        else
+            laser_create(1.15f, 1.15f);
+    }
+    void bullet_speed()
     {
         if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
         {
@@ -79,14 +130,17 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         {
             rb2d.velocity = new Vector2(x, y) * speed / 2;
             bulletSpeed = Vector2.zero;
+            laser_create(4, 2);
         }
         else
         {
             rb2d.velocity = new Vector2(x, y) * speed / 4;
             bulletSpeed = Vector2.zero;
+            laser_create(5, 3.75f);
         }
     }
-    void bulletColor()
+
+    void bullet_color()
     {
         if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
             currColor = colorSpeed_0;
@@ -95,24 +149,36 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
         {
             currColor = colorSpeed_2;
-            bullet_damge = bullet_damge * 2;
         }
         else
         {
             currColor = colorSpeed_3;
-            bullet_damge = bullet_damge *3;
         }
         spriterender.color = currColor;
     }
-
+    void bullet_damage()
+    {
+        if (BulletScript.bulletShotCount < 0)
+        {
+            bullet_damge = bullet_damge * 3;
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0) { }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1) { }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
+            bullet_damge = bullet_damge * 2;
+        else
+            bullet_damge = bullet_damge * 4;
+    }
     // happen when bullet is destroyed
     void OnDestroy()
     {
+        EXPLOSION.explosionCreateRotate(explosionRef3, transform.position, spriterender.color);
         changeCounter();
     }
 
     void Update()
     {
+        //increaseSize(2 , 0.00001f);
     }
     private void FixedUpdate() // MORE EFFICIENT version of update method (every frame)
     {
@@ -132,7 +198,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
             EXPLOSION.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
             spriterender.color = currColor;
             bulletSpeed = new Vector2(x / 2, y / 2);
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, lifeTime / 2);
         }
     }
 
@@ -142,13 +208,19 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         {
             GetComponent<AudioSource>().Play();
             EXPLOSION.explosionCreate(explosionRef, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
-            Destroy(gameObject,  GetComponent<AudioSource>().clip.length);
+            Destroy(gameObject, GetComponent<AudioSource>().clip.length);
             //Destroy(gameObject, 0.3f);
 
         }
+        else if (other.CompareTag(CONSTANTS.COLLISION_TAG_TELEPORT))
+        {
+            //transform.position = other.gameObject.GetComponent<DoorScript>().teleport.position;
+            //bulletSpeed = new Vector2(-y , -x);
+            EXPLOSION.explosionCreate(explosionRef4, transform.position, spriterender.color);
+            Destroy(gameObject);
+        }
 
-
-        if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
+        else if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
         {
             EXPLOSION.explosionCreate(explosionRef2, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
             spriterender.color = other.gameObject.GetComponent<SpriteRenderer>().color;
@@ -159,25 +231,30 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
             var top = Random.Range(0, CONSTANTS.BULLET_SIM_SPEED_MAX);
             var bottom = Random.Range(1, CONSTANTS.BULLET_SIM_SPEED_MAX);
             var factor = top / bottom;
-            if (factor % 2 == 0)
+            if (factor % 8 == 0)
             {
-                bulletSpeed = new Vector2(factor * y, factor * x);
+                bulletSpeed = new Vector2(factor * factor * -y, factor * factor * -x);
+
+                // these keep the things STUCK
+                //rb2d.velocity = new Vector2 ( bulletSpeed.x * top * x , bulletSpeed.y * bottom * y) - new Vector2 ( bulletSpeed.x * bottom * x , bulletSpeed.y * top * y);
+                rb2d.velocity = new Vector2 (  bottom * rb2d.velocity.x,  top * rb2d.velocity.y );
                 return;
             }
             if (top % 2 == 1)
                 x = -x;
             if (bottom % 2 == 1)
                 y = -y;
-            if (factor % 4 == 0)
+            if (factor % 2 == 0)
             {
                 var yTemp = y;
                 y = x;
                 x = yTemp;
             }
             bulletSpeed = new Vector2(factor * x, factor * y);
+            // increase life time & color to indicate change
+            lifeTime += (lifeTime / 2);
+            spriterender.color = other.gameObject.GetComponent<SpriteRenderer>().color;
         }
     }
-
-
 }
 

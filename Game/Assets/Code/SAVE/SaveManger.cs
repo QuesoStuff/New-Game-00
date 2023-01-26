@@ -42,7 +42,7 @@ public static class SaveManager
             }
         }
         SaveData newFile = new SaveData();
-        newFile.set(Clock.START_TIME);
+        newFile.set(Clock.CLOCK_COUNTDOWM_START);
         return newFile;
         //return null;
     }
