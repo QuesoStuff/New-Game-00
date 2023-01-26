@@ -25,37 +25,30 @@ public class Player_Sound : SOUND
     }
     public void audioShoot_0()
     {
-        GetComponent<AudioSource>().clip = audio_array[0];
-        GetComponent<AudioSource>().Play();
+       audio_play(0);
     }
     public void audioShoot_1()
     {
-        GetComponent<AudioSource>().clip = audio_array[1];
-        GetComponent<AudioSource>().Play();
+       audio_play(1);
     }
     public void audioShoot_charged()
     {
-        GetComponent<AudioSource>().clip = audio_array[2];
-        GetComponent<AudioSource>().Play();
+       audio_play(2);
     }
     public void audioTeleport()
     {
-        GetComponent<AudioSource>().clip = audio_array[3];
-        GetComponent<AudioSource>().Play();
+       audio_play(3);
     }
     public void audioCollision()
     {
-        GetComponent<AudioSource>().clip = audio_array[4];
-        GetComponent<AudioSource>().Play();
+       audio_play(4);
     }
     public void audioDash()
     {
-        GetComponent<AudioSource>().clip = audio_array[5];
-        GetComponent<AudioSource>().Play();
+       audio_play(5);
     }
     public void audioHurt()
     {
-        GetComponent<AudioSource>().clip = audio_array[6];
-        GetComponent<AudioSource>().Play();
+       audio_play(6);
     }
 }

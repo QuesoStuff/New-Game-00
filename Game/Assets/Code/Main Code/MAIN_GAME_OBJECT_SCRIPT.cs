@@ -9,6 +9,8 @@ public abstract class MAIN_GAME_OBJECT_SCRIPT : MonoBehaviour
     [SerializeField] internal Rigidbody2D rb2d;  // deals with movement, vectors
     [SerializeField] internal SpriteRenderer spriterender; // graphical part, flips sprite if need be
 
+    [SerializeField] internal float scale_X;
+    [SerializeField] internal float scale_Y; 
 
 
     // SET & CONSTRUCTOR 
@@ -39,11 +41,13 @@ public abstract class MAIN_GAME_OBJECT_SCRIPT : MonoBehaviour
         transform.localScale = newScale;
     }
 
-    public IEnumerator resizeScale(float fadeDuration, float startingScale, float endingScale)
+
+    // this is not a true reesize but a square one 
+    public IEnumerator resizeScale_Square(float startingScale, float endingScale, float fadeDuration)
     {
         Vector2 startSize = new Vector2(startingScale, startingScale);
-        transform.localScale = startSize;
         Vector2 endSize = new Vector2(endingScale, endingScale);
+        transform.localScale = startSize;
 
         while (fadeDuration > Time.deltaTime)
         {
@@ -53,5 +57,30 @@ public abstract class MAIN_GAME_OBJECT_SCRIPT : MonoBehaviour
         }
     }
 
+    public IEnumerator resizeScale_General(float startingScale_x, float startingScale_y, float newScale, float fadeDuration)
+    {
+        Vector2 startSize = new Vector2(startingScale_x, startingScale_y);
+        Vector2 endSize = newScale * startSize;
+        transform.localScale = startSize;
 
+        while (fadeDuration > Time.deltaTime)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, endSize, Time.deltaTime / fadeDuration);
+            fadeDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    public IEnumerator resizeScale_General(float startingScale_x, float startingScale_y, float endingScale_x, float endingScale_y, float fadeDuration)
+    {
+        Vector2 startSize = new Vector2(startingScale_x, startingScale_y);
+        Vector2 endSize = new Vector2(endingScale_x, endingScale_y);
+        transform.localScale = startSize;
+
+        while (fadeDuration > Time.deltaTime)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, endSize, Time.deltaTime / fadeDuration);
+            fadeDuration -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
 }

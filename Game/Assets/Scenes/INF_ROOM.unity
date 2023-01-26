@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 1922801675}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_LocalScale.x
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_Name
-      value: door 2
+      value: door right
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_TagString
@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_LocalScale.x
@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_Name
-      value: door 3
+      value: door left
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_TagString
@@ -911,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_LocalScale.x
@@ -977,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1192,6 +1192,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1218,6 +1220,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1045945556
 MonoBehaviour:
@@ -1234,6 +1238,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1321,6 +1327,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1287094348
 MonoBehaviour:
@@ -1337,6 +1345,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1363,6 +1373,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1287734155
 MonoBehaviour:
@@ -1379,6 +1391,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1402,7 +1416,7 @@ PrefabInstance:
       objectReference: {fileID: 489156569}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1454,7 +1468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_Name
-      value: door 1
+      value: door down
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_TagString
@@ -1592,7 +1606,7 @@ PrefabInstance:
       objectReference: {fileID: 410197551}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544932, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1644,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_Name
-      value: door 0
+      value: door up
       objectReference: {fileID: 0}
     - target: {fileID: 8546452829922544935, guid: 0b0412491b2458c498c2e4323048902a, type: 3}
       propertyPath: m_TagString
@@ -1686,7 +1700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938307523230400822, guid: ea30bcc0760e9474cba63c2db086cb46, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 938307523230400822, guid: ea30bcc0760e9474cba63c2db086cb46, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1967,10 +1981,37 @@ MonoBehaviour:
   audio_array:
   - {fileID: 8300000, guid: 9577ecb53de03bc48963cb4e545ec176, type: 3}
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  audio: {fileID: 0}
-  otherGameMusic: []
-  camColor: {fileID: 0}
-  not_first_track: 0
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  audion_current: {fileID: 0}
+  otherGameMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1922801672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610688535032207169, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
@@ -2078,7 +2119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1610688535032207172, guid: dadad3cce65e8a14795700ef24722c0f, type: 3}
       propertyPath: m_LocalScale.x
@@ -2195,7 +2236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2219647010044923636, guid: 1448c538316c9bb4e85d06ae07f5a94f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2219647010044923636, guid: 1448c538316c9bb4e85d06ae07f5a94f, type: 3}
       propertyPath: m_LocalScale.x

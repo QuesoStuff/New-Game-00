@@ -94,6 +94,17 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
             Controller.charged_Shooting();
             Controller.RecordDistance();
             //wrap_around();
+            // TESTING SPECIAL ATTACKS
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                BulletScript.item1 = !BulletScript.item1;
+                Debug.Log("item1: " + BulletScript.item1);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                BulletScript.item2 = !BulletScript.item2;
+                Debug.Log("item2: " + BulletScript.item2);
+            }
         }
     }
     // Update is called once per frame (for physics and fixed frameRate)

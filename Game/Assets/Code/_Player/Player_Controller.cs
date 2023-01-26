@@ -314,7 +314,12 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
             mainScript.bullet_shot_Count++;
             //bulletObject.GetComponent<BulletScript>().bullet_damge = 7;
             // for debug purposes
-            StartCoroutine(modifyBullet.resizeScale(0.75f, 0, Mathf.Min(bulletObject.transform.localScale.x, bulletObject.transform.localScale.y)));
+
+            StartCoroutine(modifyBullet.resizeScale_General(0,0,3,3, 0.75f));
+
+            //StartCoroutine(modifyBullet.resizeScale_General(0,0, bulletObject.transform.localScale.x, bulletObject.transform.localScale.y , 0.75f));
+            //StartCoroutine(modifyBullet.resizeScale_Square(0, bulletObject.transform.localScale.x, 0.75f));
+            //StartCoroutine(modifyBullet.resizeScale(0.75f, 0, Mathf.Min(bulletObject.transform.localScale.x, bulletObject.transform.localScale.y)));
 
         }
     }

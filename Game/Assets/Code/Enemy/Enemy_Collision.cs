@@ -22,10 +22,7 @@ public class Enemy_Collision : MAIN_GAME_OBJECT_SCRIPT
     public void collisionWith_Bullet(Collider2D other)
     {
         int damage = other.gameObject.GetComponent<BulletScript>().bullet_damge;
-        Debug.Log(mainScript.Health.HP);
         mainScript.Health.HP_damage(damage);
-        Debug.Log(damage);
-        Debug.Log(mainScript.Health.HP);
     }
     public void collisionWith_Door(Collider2D other)
     {

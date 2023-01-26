@@ -5,7 +5,8 @@ using UnityEngine;
 public class Random_Music : SOUND
 {
     public AudioClip[] otherGameMusic;
-    [SerializeField] internal bool not_first_track;
+    [SerializeField] internal static bool not_first_track = false;
+    [SerializeField] internal static int trackCount = 0;
 
     public new void setComponent()
     {
@@ -13,39 +14,38 @@ public class Random_Music : SOUND
     }
 
     // Use this for initialization
-    new void  set()
+    new void set()
     {
         base.set();
         setComponent();
-        not_first_track = false;
     }
     void Start()
     {
         set();
-        if (!GetComponent<AudioSource>().playOnAwake)
-        {
-            playMusic();
-        }
+        if (!audion_current.playOnAwake)
+        audio_play_music_random();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        playMusicRandom();
+        audio_music_player();
     }
-    public void playMusicRandom()
+    public void audio_music_player()
     {
-        if (!GetComponent<AudioSource>().isPlaying)
+        if (!audion_current.isPlaying)
         {
-            playMusic();
+            audio_play_music_random();
             if (not_first_track == true)
             {
                 changeRoom();
             }
             not_first_track = true;
+            trackCount++;
         }
     }
-    public float randomColorValue()
+    public static float randomColorValue()
     {
         return Random.Range(0, 1.0f);
     }
@@ -55,18 +55,18 @@ public class Random_Music : SOUND
         float G = randomColorValue();
         float B = randomColorValue();
         //camColor.transitionColor(new Color(R, G, B, 1));
-        StartCoroutine(CameraPlayerFollow.transitionColor_Background_No_Update(4.0f, new Color(R, G, B, 1)) );
+        StartCoroutine(CameraPlayerFollow.transitionColor_Background_No_Update(4.0f, new Color(R, G, B, 1)));
 
     }
-    public void playMusic()
+    public void audio_play_music_random()
     {
-        GetComponent<AudioSource>().clip = audio_array[Random.Range(0, audio_array.Length)];
-        GetComponent<AudioSource>().Play();
+        audion_current.clip = audio_array[Random.Range(0, audio_array.Length)];
+        audion_current.Play();
     }
-    public void playPauseMusic()
+    public void audio_play_menu_random()
     {
-        GetComponent<AudioSource>().clip = audio_array[Random.Range(0, audio_array.Length)];
-        GetComponent<AudioSource>().Play();
+        audion_current.clip = otherGameMusic[Random.Range(0, otherGameMusic.Length)];
+        audion_current.Play();
     }
 }
 

@@ -6,7 +6,7 @@ public class Pause_Game : MonoBehaviour
 {
     [SerializeField] internal GameObject soundBox;
     [SerializeField] internal Random_Music audioScript;
-    [SerializeField] static internal bool isPaused;
+    [SerializeField] static internal bool isPaused = false;
 
 
     // Start is called before the first frame update
@@ -14,7 +14,6 @@ public class Pause_Game : MonoBehaviour
     {
         soundBox = GameObject.Find("Game_Manager").transform.GetChild(0).gameObject;
         audioScript = soundBox.GetComponent<Random_Music>();
-        isPaused = false;
     }
     void set()
     {
@@ -33,12 +32,12 @@ public class Pause_Game : MonoBehaviour
             Time.timeScale = 1 - Time.timeScale;
             if (Time.timeScale == 0)
             {
-                audioScript.playPauseMusic();
+                audioScript.audio_play_menu_random();
                 isPaused = true;
             }
             else
             {
-                audioScript.playMusic();
+                audioScript.audio_play_music_random();
                 isPaused = false;
             }
         }

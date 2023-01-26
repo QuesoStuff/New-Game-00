@@ -7,12 +7,15 @@ using UnityEngine;
 public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
 {
     // fields & variable creation
+    [SerializeField] internal static bool item1 = false;
+    [SerializeField] internal static bool item2 = false;
+
     [SerializeField] internal float speed;
     [SerializeField] internal float x;
     [SerializeField] internal float y;
     [SerializeField] internal int bullet_damge;
 
-    [SerializeField] internal static int bulletShotCount;
+    [SerializeField] internal static int bulletShotCount = 0;
     [SerializeField] internal Color currColor;
     [SerializeField] internal Color colorSpeed_0;
     [SerializeField] internal Color colorSpeed_1;
@@ -76,6 +79,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         bullet_speed();
         bullet_damage();
         //laser_create(4, 4);
+
     }
     void changeCounter()
     {
@@ -86,6 +90,7 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     {
         float x = transform.localScale.x;
         float y = transform.localScale.y;
+
         changeScale(scale * x, 1 * y);
     }
     void laster_vertical(float scale)
@@ -96,43 +101,49 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     }
     void laser_create(float scale_H, float scale_V)
     {
-        if ((x == -1 && y == 0) || (x == 1 && y == 0))
+        if ((x != 0 && y == 0))
             laser_horizontal(scale_H);
-        else if ((x == 0 && y == -1) || (x == 0 && y == 1))
+        if ((x == 0 && y != 0))
             laster_vertical(scale_V);
     }
     void bullet_shape()
     {
-        Debug.Log("count:");
-        Debug.Log((bulletShotCount));
-
-        if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_PERFECT)
+        if (BulletScript.bulletShotCount < 2)
         {
-            Debug.Log("0");
             laser_create(3.5f, 3.5f);
+            var x = transform.localScale.x;
+            var y = transform.localScale.y;
+            StartCoroutine(resizeScale_General(0, 0, x, y, 0.40f));
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_PERFECT)
+        {
+            laser_create(3.0f, 3.0f);
+            //laser_create(2.0f, 2.0f);
         }
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
         {
-            Debug.Log("1");
+            laser_create(2.0f, 2.0f);
         }
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_1)
         {
-            Debug.Log("2");
+            //laser_create(1.15f, 1.15f);
         }
         else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_2)
         {
-            Debug.Log("3");
             laser_create(1.15f, 1.15f);
         }
         else
         {
             laser_create(1.15f, 1.15f);
-            Debug.Log("4");
         }
     }
     void bullet_speed()
     {
-        if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
+        if (BulletScript.bulletShotCount < 2)
+        {
+            bulletSpeed = new Vector2(x, y) * speed / 2;
+        }
+        else if (BulletScript.bulletShotCount < CONSTANTS.BULLET_COUNT_0)
         {
             rb2d.velocity = new Vector2(x, y) * speed;
             bulletSpeed = new Vector2(x, y) * speed;
@@ -146,13 +157,13 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
         {
             rb2d.velocity = new Vector2(x, y) * speed / 2;
             bulletSpeed = Vector2.zero;
-            laser_create(4, 2);
+            //laser_create(4, 2);
         }
         else
         {
             rb2d.velocity = new Vector2(x, y) * speed / 4;
             bulletSpeed = Vector2.zero;
-            laser_create(5, 3.75f);
+            //laser_create(5, 3.75f);
         }
     }
 
@@ -209,6 +220,12 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
     void Update()
     {
         //increaseSize(2 , 0.00001f);
+
+        if (item1)
+        {
+            bullet_speed();
+            bullet_color();
+        }
     }
     private void FixedUpdate() // MORE EFFICIENT version of update method (every frame)
     {
@@ -242,21 +259,27 @@ public class BulletScript : MAIN_GAME_OBJECT_SCRIPT
             //Destroy(gameObject, 0.3f);
 
         }
-        else if (other.CompareTag(CONSTANTS.COLLISION_TAG_TELEPORT))
+         if (other.CompareTag(CONSTANTS.COLLISION_TAG_TELEPORT))
         {
-            //transform.position = other.gameObject.GetComponent<DoorScript>().teleport.position;
-            //bulletSpeed = new Vector2(-y , -x);
-            EXPLOSION.explosionCreate(explosionRef4, transform.position, spriterender.color);
-            Destroy(gameObject);
+            if (item2)
+            {
+                transform.position = other.gameObject.GetComponent<DoorScript>().teleport.position;
+                bulletSpeed = new Vector2(-y, -x);
+            }
+            else
+            {
+                EXPLOSION.explosionCreate(explosionRef4, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
+                Destroy(gameObject);
+            }
         }
 
-        else if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
+         if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
         {
             EXPLOSION.explosionCreate(explosionRef2, transform.position, other.gameObject.GetComponent<SpriteRenderer>().color);
             spriterender.color = other.gameObject.GetComponent<SpriteRenderer>().color;
             bulletSpeed = new Vector2(-x / 8, -y / 8);
         }
-        else if (other.CompareTag(CONSTANTS.COLLISION_TAG_ITEM))
+         if (other.CompareTag(CONSTANTS.COLLISION_TAG_ITEM))
         {
             var top = Random.Range(0, CONSTANTS.BULLET_SIM_SPEED_MAX);
             var bottom = Random.Range(1, CONSTANTS.BULLET_SIM_SPEED_MAX);
