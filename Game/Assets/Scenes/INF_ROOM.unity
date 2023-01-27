@@ -1192,8 +1192,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1220,8 +1219,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1045945556
 MonoBehaviour:
@@ -1238,8 +1236,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1327,8 +1324,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1287094348
 MonoBehaviour:
@@ -1345,8 +1341,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1373,8 +1368,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1287734155
 MonoBehaviour:
@@ -1391,8 +1385,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
-  scale_X: 0
-  scale_Y: 0
+  sound: {fileID: 0}
   teleport: {fileID: 0}
   opacityMeter: 0
   opacitySpeedFactor: 0
@@ -1981,17 +1974,17 @@ MonoBehaviour:
   audio_array:
   - {fileID: 8300000, guid: 9577ecb53de03bc48963cb4e545ec176, type: 3}
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
-  - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
+  - {fileID: 8300000, guid: fbc0f60f30f4ec248b9186aef463b54e, type: 3}
+  - {fileID: 8300000, guid: 19ebf2a8dcc700c4ba548e83bbabb2d6, type: 3}
+  - {fileID: 8300000, guid: a60ce6823f9414e49b483cb975db5327, type: 3}
+  - {fileID: 8300000, guid: 906fbb5faf39bee46b4d590843b1fd86, type: 3}
+  - {fileID: 8300000, guid: dc273dfaf3ba88445b54a5189fe6e6a3, type: 3}
+  - {fileID: 8300000, guid: ce448a6422b9aed499d62b23791ec3b4, type: 3}
+  - {fileID: 8300000, guid: 6770b524e72641148a83df14267417e8, type: 3}
+  - {fileID: 8300000, guid: f0fadc77714fa474ba7059b3ee2dcd4d, type: 3}
+  - {fileID: 8300000, guid: 6d176c7493baee646bdc13d486f5c93a, type: 3}
+  - {fileID: 8300000, guid: 14782d0aae94ee64195c1e5a6ab465d2, type: 3}
+  - {fileID: 8300000, guid: 10cfaabf8c2921c429969d3bf8da9086, type: 3}
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
@@ -2001,7 +1994,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8426d49204548004dba7fcaa829f3860, type: 3}
   audion_current: {fileID: 0}
   otherGameMusic:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 34c23a5aafd52674ba0e6e1e0f4c506d, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

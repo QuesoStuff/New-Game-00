@@ -65,7 +65,6 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
         x = y = 0;
         currSpeed_down = currSpeed_up = currSpeed_left = currSpeed_right = CONSTANTS.MOVE_DEFAULT_SPEED;
         currSpeed_down_diagonal = currSpeed_up_diagonal = currSpeed_left_diagonal = currSpeed_right_diagonal = CONSTANTS.MOVE_DEFAULT_SPEED / Mathf.Sqrt(2.0f);
-
         canDash = true;
         isDashing = false;
         dashSpeed = 10;
@@ -80,13 +79,6 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
         mainScript.total_Distance_traveled += Vector2.Distance(transform.position, previousLoc);
         previousLoc = transform.position;
     }
-
-
-    // for testing the 8-Directional shooting
-
-
-
-
 
     public void straight_shot()
     {
@@ -140,7 +132,12 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
         straight_shot();
         //diagnol_shot(); we will keep it straight for now
     }
-    public void ultimate_direction_input()
+    public void ultimate_Player_Moving()
+    {
+        player_Moving();
+        player_Moving_Diagnol();
+    }
+    public void player_direcitonal_input_ALL_8_directional_inputs()
     {
         x = y = 0;
         if (INPUT.input_move_up())
@@ -200,11 +197,7 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
             bullet_y = -1;
         }
     }
-    public void ultimate_Player_Moving()
-    {
-        player_Moving();
-        player_Moving_Diagnol();
-    }
+
     public void player_Moving()
     {
         x = y = 0;
@@ -278,48 +271,34 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
     {
         if (INPUT.input_shoot())
         {
-
             var x = bullet_x;
             var y = bullet_y;
             bulletPosition = transform.position;
             GameObject bulletObject = (GameObject)Instantiate(bullet_ref, bulletPosition, Quaternion.identity);
-            //bullet_config = bulletObject.GetComponent<BulletScript>();
-            bulletObject.GetComponent<BulletScript>().x = x;
-            bulletObject.GetComponent<BulletScript>().y = y;
+            bullet_config = bulletObject.GetComponent<BulletScript>();
+            bullet_config.x = x;
+            bullet_config.y = y;
             mainScript.bullet_shot_Count++;
-            //StartCoroutine(resizeScale(0.25f, 0, Mathf.Min(transform.localScale.x, transform.localScale.y)));
             if (Random.Range(0.0f, 1.0f) > 0.5f)
-                mainScript.SFX.audioShoot_0();
+                mainScript.playerSound.audioShoot_0();
             else
-                mainScript.SFX.audioShoot_1();
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-
+                mainScript.playerSound.audioShoot_1();
         }
     }
     public void charged_Shooting()
     {
         if (INPUT.input_charged_Shot())
         {
-            mainScript.SFX.audioShoot_charged();
+            mainScript.playerSound.audioShoot_charged();
             var x = bullet_x;
             var y = bullet_y;
             bulletPosition = transform.position;
             GameObject bulletObject = (GameObject)Instantiate(chargedBullet_ref, bulletPosition, Quaternion.identity);
             BulletScript modifyBullet = bulletObject.GetComponent<BulletScript>();
-            modifyBullet.increaseSize(100, 0.00001f);
-            modifyBullet.x = (float)x / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
-            modifyBullet.y = (float)y / (float)CONSTANTS.MOVE_DEFAULT_SPEED;
+            modifyBullet.x = (float)x / (float)(CONSTANTS.MOVE_DEFAULT_SPEED * 1.5f);
+            modifyBullet.y = (float)y / (float)(CONSTANTS.MOVE_DEFAULT_SPEED * 1.5f);
             mainScript.bullet_shot_Count++;
-            //bulletObject.GetComponent<BulletScript>().bullet_damge = 7;
-            // for debug purposes
-
-            StartCoroutine(modifyBullet.resizeScale_General(0,0,3,3, 0.75f));
-
-            //StartCoroutine(modifyBullet.resizeScale_General(0,0, bulletObject.transform.localScale.x, bulletObject.transform.localScale.y , 0.75f));
-            //StartCoroutine(modifyBullet.resizeScale_Square(0, bulletObject.transform.localScale.x, 0.75f));
-            //StartCoroutine(modifyBullet.resizeScale(0.75f, 0, Mathf.Min(bulletObject.transform.localScale.x, bulletObject.transform.localScale.y)));
+            modifyBullet.StartCoroutine(modifyBullet.resizeScale_Rectangle(0 , 0 , 450 *bulletObject.transform.localScale.x ,450*  bulletObject.transform.localScale.y, 3.35f));
 
         }
     }
@@ -327,43 +306,32 @@ public class Player_Controller : MAIN_GAME_OBJECT_SCRIPT
 
     public void playerDash()
     {
-        //if (INPUT.input_dash_quick() && canDash)
-        //{
-        //    StartCoroutine(Dash(dashSpeed_quick, quickDashTime));
-        //}
         if (INPUT.input_dash_normal() && canDash)
         {
-            mainScript.SFX.audioDash();
+            mainScript.playerSound.audioDash();
             StartCoroutine(Dash(dashSpeed, dashingTime));
         }
     }
     public void player_Move_Fixed()
     {
         Vector2 direction = new Vector2(x, y);
-        //direction = direction.normalized;
         rb2d.velocity = direction;
     }
     public IEnumerator Dash(int dashSpeed, float time)
     {
         canDash = false;
-        //spriterender.color = Color.white;
-        StartCoroutine(mainScript.Color.dash());
+        //StartCoroutine(mainScript.Color.dash());
+        StartCoroutine(COLOR2.flash(Player_Color.DEFAULT_PLAYER_COLOR_DASH, mainScript.Controller.dashingTime , spriterender));
         isDashing = true;
-        //mainScript.ex.explosionCreate(explosion_ref, transform.position, spriterender.color);
         EXPLOSION.explosionCreateConsant(explosion_ref, transform.position, spriterender.color);
-        //rb2d.AddForce(dash * rb2d.velocity);
         currSpeed_down = currSpeed_up = currSpeed_left = currSpeed_right = dashSpeed;
         currSpeed_down_diagonal = currSpeed_up_diagonal = currSpeed_left_diagonal = currSpeed_right_diagonal = dashSpeed / Mathf.Sqrt(2.0f);
-
-        //tr.emitting = true;
         yield return new WaitForSeconds(time);
-        //tr.emitting = false;
         isDashing = false;
         currSpeed_down = currSpeed_up = currSpeed_left = currSpeed_right = CONSTANTS.MOVE_DEFAULT_SPEED;
         currSpeed_down_diagonal = currSpeed_up_diagonal = currSpeed_left_diagonal = currSpeed_right_diagonal = CONSTANTS.MOVE_DEFAULT_SPEED_DIAGONAL;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        //mainScript.Color.resetColor();
     }
 
 }

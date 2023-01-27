@@ -11,7 +11,6 @@ public class Player_Collision : MAIN_GAME_OBJECT_SCRIPT
 
     public void setComponent()
     {
-        //mainScript = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).GetComponent<_Player_Script>();
         mainScript = GetComponent<_Player_Script>();
 
     }
@@ -19,7 +18,7 @@ public class Player_Collision : MAIN_GAME_OBJECT_SCRIPT
     {
         base.set();
         setComponent();
-        pushBack = 5000;
+        pushBack = CONSTANTS.MOVE_KNOCKBACK;
 
     }
 
@@ -31,9 +30,11 @@ public class Player_Collision : MAIN_GAME_OBJECT_SCRIPT
     public void collisionWith_Enemy_EXIT(Collision2D collision)
     {
         //flash();
-        mainScript.SFX.audioHurt();
+        mainScript.playerSound.audioHurt();
         mainScript.HP.HP_damage(collision.gameObject.GetComponent<Enemy_Health>().damageToPlayer);
-        StartCoroutine(mainScript.Color.flash(mainScript.Color.DEFAULT_PLAYER_COLOR_HURT , 0.1f));
+        //StartCoroutine(mainScript.Color.flash(mainScript.Color.DEFAULT_PLAYER_COLOR_HURT , 0.1f));
+        StartCoroutine(COLOR2.flash(Player_Color.DEFAULT_PLAYER_COLOR_HURT, 0.1f, mainScript.spriterender));
+
     }
     public void collisionWith_Door(Collider2D other)
     {
@@ -44,13 +45,15 @@ public class Player_Collision : MAIN_GAME_OBJECT_SCRIPT
         ItemScript item = other.gameObject.GetComponent<ItemScript>();
         ScoreManager.scoreChange(item.scoreAdded);
         mainScript.HP.HP_heal(item.HP_Added);
-        if (item.HP_Added> item.scoreAdded)
+        if (item.HP_Added > item.scoreAdded)
         {
-            StartCoroutine(mainScript.Color.flashing(mainScript.Color.DEFAULT_PLAYER_COLOR_HP_UP , 2 , 0.1f));
+            //StartCoroutine(mainScript.Color.flashing(mainScript.Color.DEFAULT_PLAYER_COLOR_HP_UP, 2, 0.1f));
+            StartCoroutine(COLOR2.flash_multiple(Player_Color.DEFAULT_PLAYER_COLOR_HURT, 0.1f, 3, mainScript.spriterender));
         }
         else
         {
-            StartCoroutine(mainScript.Color.flashing(mainScript.Color.DEFAULT_PLAYER_COLOR_DASH , 2 , 0.1f));
+            //StartCoroutine(mainScript.Color.flashing(mainScript.Color.DEFAULT_PLAYER_COLOR_DASH, 2, 0.1f));
+            StartCoroutine(COLOR2.flash_multiple(Player_Color.DEFAULT_PLAYER_COLOR_DASH, 0.1f, 3, mainScript.spriterender));
         }
 
 
@@ -62,6 +65,8 @@ public class Player_Collision : MAIN_GAME_OBJECT_SCRIPT
     }
     public void collisionWith_Wall_EXIT(Collision2D collision)
     {
-        mainScript.Color.Invoke("resetColor", 2.3f);
+        //mainScript.Color.Invoke("resetColor", 2.3f);
+        StartCoroutine(COLOR2.transition_self(Player_Color.DEFAULT_PLAYER_COLOR, 2.5f, mainScript.spriterender));
+
     }
 }

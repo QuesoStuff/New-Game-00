@@ -37,8 +37,7 @@ public class Enemy_Health : HEALTH
         if (HP <= 0)
             HP_Zero();
         else
-            mainScript.Color.whiteFlash();
-        //StartCoroutine(mainScript.Color.whiteFlash()); 
+            StartCoroutine(mainScript.Color.whiteFlash());
     }
     public override void HP_damage(int damage)
     {
@@ -46,8 +45,7 @@ public class Enemy_Health : HEALTH
         if (HP <= 0)
             HP_Zero();
         else
-            mainScript.Color.whiteFlash();
-        //StartCoroutine(mainScript.Color.whiteFlash()); 
+            StartCoroutine(mainScript.Color.whiteFlash());
     }
 
 
@@ -56,11 +54,9 @@ public class Enemy_Health : HEALTH
         mainScript.Controller.speed /= 4;
         GetComponent<BoxCollider2D>().enabled = false;
         mainScript.spriterender.color = Color.white;
-        //GetComponent<AudioSource>().Play();
-        mainScript.Sound.audio_play(0);
-        Destroy(gameObject, mainScript.Sound.GetComponent<AudioSource>().clip.length);
+        mainScript.Sound.audio_play();
+        Destroy(gameObject, (mainScript.Sound.audio_current.clip.length));
         EXPLOSION.explosionCreate(explosionRef, transform.position, mainScript.spriterender.color);
-        // to make the enemy vanish
         mainScript.spriterender.enabled = false;
     }
 
@@ -68,7 +64,6 @@ public class Enemy_Health : HEALTH
     {
         player.killCount++;
         ScoreManager.scorechange();
-        //mainScript.respawnScript.enemyCreatedCount--;
         Random_Level_Gen.enemy_Count--;
     }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
 {
     [SerializeField] internal Enemy_Controller Controller;
@@ -11,35 +10,20 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal Enemy_Moves Moves;
     [SerializeField] internal Enemy_Collision Collision;
     [SerializeField] internal Enemy_Input INPUT;
-    [SerializeField] internal Enemy_Sound Sound;
-
+    [SerializeField] internal SOUND Sound;
     [SerializeField] internal delegate void funct_ptr();
     [SerializeField] internal funct_ptr moveFunct_ptr;
     [SerializeField] internal int movementConfiguration;
 
-
-
-    // Start is called before the first frame update
-    /*
-    void setRef()
-    {
-        explosionRef = Resources.Load("Explosion");
-    }
-    void setComponent()
-    {
-        player = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).GetComponent<_Player_Script>();
-    }
-    */
     public void setComponent()
     {
-        //GameObject temp = (GameObject)Resources.Load("enemy");
         Controller = GetComponent<Enemy_Controller>();
         Health = GetComponent<Enemy_Health>();
         Color = GetComponent<Enemy_Color>();
         Moves = GetComponent<Enemy_Moves>();
         Collision = GetComponent<Enemy_Collision>();
         INPUT = GetComponent<Enemy_Input>();
-        Sound = GetComponent<Enemy_Sound>();
+        Sound = GetComponent<SOUND>();
     }
 
     public new void set()
@@ -55,23 +39,7 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
         INPUT.set();
         Sound.set();
         movementConfiguration = Random.Range(1, CONSTANTS.ENEMY_MOVE_COUNT) % 4;
-        //speed = Random.Range(1, CONSTANTS.MOVE_MAX_ENEMY_SPEED);
-        //RESET_SPEED = speed;
-
-        //enemyHP = Random.Range(1, CONSTANTS.ENEMY_HP_MAX);
-
-        //movementConfiguration = Random.Range(1, CONSTANTS.ENEMY_MOVE_COUNT);
-
-        //damageToPlayer = Random.Range(1, CONSTANTS.ENEMY_DAMAGE_MAX);
-
-        //playerTransform = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).transform;
-        //originalColor = spriterender.color;
     }
-
-
-
-
-
 
     void Start()
     {
@@ -79,7 +47,6 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
         Moves.chooseMovement(movementConfiguration);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (moveFunct_ptr != null)
@@ -89,7 +56,6 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
     {
         Controller.Enemy_Move_Fixed();
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -113,11 +79,6 @@ public class EnemyScript : MAIN_GAME_OBJECT_SCRIPT
         {
             Collision.collisionWith_Player(collision);
         }
-
     }
-
-
-
-
 
 }

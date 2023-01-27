@@ -6,10 +6,7 @@ using UnityEngine;
 public class Enemy_Input : INPUT
 {
 
-    // ADDED SCRIPTS (internal allows to be accessed)
-    // FIELDS (Unity types)
-    // FIELDS (variables)
-    // SET and CONSTRUCTORS 
+
     [SerializeField] internal EnemyScript mainScript;
 
     public void setComponent()
@@ -49,5 +46,4 @@ public class Enemy_Input : INPUT
     {
         return (Input.GetKeyUp(KeyCode.Space));
     }
-    // I_other_Interface METHOD DECLARATION (may not exist)
 }

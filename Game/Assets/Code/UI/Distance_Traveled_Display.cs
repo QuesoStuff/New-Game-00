@@ -8,9 +8,6 @@ public class Distance_Traveled_Display : GENERIC_UI
     [SerializeField] internal float distance;
     [SerializeField] internal int RATE;
 
-
-    // Use this for initialization
-
     new void set()
     {
         base.set();
@@ -26,8 +23,6 @@ public class Distance_Traveled_Display : GENERIC_UI
     {
         set();
     }
-
-    // Update is called once per frame
     void Update()
     {
         display();
@@ -39,10 +34,8 @@ public class Distance_Traveled_Display : GENERIC_UI
     {
         if (playerScript.total_Distance_traveled > saveFile.MAX_DISTANCE && saveFile.MAX_DISTANCE > 0)
         {
-            //newDisplayColor = color.green; DEFAULT IS YELLOW
             newSaveData = true;
             setTextColor(newDisplayColor);
-
         }
     }
 }

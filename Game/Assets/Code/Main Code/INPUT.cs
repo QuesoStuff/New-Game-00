@@ -3,14 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class INPUT : MonoBehaviour, I_INPUT //, I_other_Interface
+public class INPUT : MonoBehaviour, I_INPUT
 {
 
-    // ADDED SCRIPTS (internal allows to be accessed)
-
-    // FIELDS (Unity types)
-
-    // FIELDS (variables)
     [SerializeField] internal float timer_input_press_up;
     [SerializeField] internal float timer_input_press_down;
     [SerializeField] internal float timer_input_press_left;
@@ -24,7 +19,6 @@ public class INPUT : MonoBehaviour, I_INPUT //, I_other_Interface
     [SerializeField] internal int doubleTap;
 
 
-    // SET and CONSTRUCTORS 
     public void set()
     {
         timer_input_press_up = 0;
@@ -36,18 +30,10 @@ public class INPUT : MonoBehaviour, I_INPUT //, I_other_Interface
         doubleTap = 0;
     }
 
-
-    // GETTERS AND SETTERS
-
-
-    // I_Parent_Interface METHOD DECLARATION (most likely Abstract)
-    //I_Input_Directional,
-    // NO BUTTON PRESS
     public bool input_iddle()
     {
         return (!Input.anyKeyDown);
     }
-    // DIRECTION MOVEMENT 
 
     public bool input_move_up()
     {
@@ -117,32 +103,6 @@ public class INPUT : MonoBehaviour, I_INPUT //, I_other_Interface
         }
         return false;
     }
-
-    /* ORIGINAL DASH IMPLEMENTATION
-        public bool input_dash(string input, ref float timer, float time_frame)
-        {
-            if (Input.GetKeyDown(input) && doubleTap < 1)
-            {
-                doubleTap = (doubleTap + 1) % 2;
-                timer = Time.time;
-                Debug.Log("first DASH: " + timer);
-            }
-            else if (Input.GetKeyDown(input) && doubleTap > 0)
-            {
-                Debug.Log("second DASH");
-                doubleTap = (doubleTap + 1) % 2;
-                Debug.Log(Time.time);
-                Debug.Log(timer);
-                Debug.Log(Time.time - timer);
-                Debug.Log(time_frame);
-                if (Time.time - timer <= time_frame)
-                    return true;
-                else
-                    return false;
-            }
-            return false;
-        }
-        */
     public bool input_dash(string input, ref float timer, float time_frame)
     {
         if (Input.GetKeyDown(input))

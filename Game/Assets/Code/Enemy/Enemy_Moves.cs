@@ -52,8 +52,7 @@ public class Enemy_Moves : MonoBehaviour
             mainScript.moveFunct_ptr = mainScript.Controller.moveFollow;
         else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_FOLLOW_SCATTER)
             mainScript.moveFunct_ptr = mainScript.Controller.moveFollow_Scatter;
-
-
+            // ok
         else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_FOLLOW_SCATTER_X)
             mainScript.moveFunct_ptr = mainScript.Controller.moveFollow_Scatter_x;
         else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_FOLLOW_SCATTER_Y)
@@ -70,13 +69,10 @@ public class Enemy_Moves : MonoBehaviour
             mainScript.moveFunct_ptr = mainScript.Controller.moveFollowKeepGoing;
         else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_WEIRD_2)
             mainScript.moveFunct_ptr = mainScript.Controller.moveCopyDiagnalWeird2;
-
         // new ones
-
-
-        if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_COPY_2)
+        else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_COPY_2)
             mainScript.moveFunct_ptr = mainScript.Controller.moveCopy_2;
-        if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_COPY_DIAGONAL_2)
+        else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_COPY_DIAGONAL_2)
             mainScript.moveFunct_ptr = mainScript.Controller.moveCopyDiagonal_2;
         else if (movementConfiguration == CONSTANTS.ENEMY_MOVEMENT_COPY_REVERSE_2)
             mainScript.moveFunct_ptr = mainScript.Controller.moveCopyReverse_2;

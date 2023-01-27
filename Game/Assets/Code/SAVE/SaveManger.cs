@@ -4,12 +4,10 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public static class SaveManager
+public static class SaveManager //C:\Users\jaf13006\AppData\LocalLow
 {
-
     [SerializeField] internal static _Player_Script mainScript;
     [SerializeField] internal static SaveData saveFile;
-
     public static void set()
     {
         mainScript = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).GetComponent<_Player_Script>();
@@ -23,7 +21,6 @@ public static class SaveManager
         binaryFormatter.Serialize(file, saveData);
         file.Close();
     }
-
     public static SaveData LoadGameState()
     {
         if (File.Exists(Application.persistentDataPath + "/SaveData.save"))
@@ -46,7 +43,6 @@ public static class SaveManager
         return newFile;
         //return null;
     }
-
     public static void SaveGame()
     {
         // make new save file 

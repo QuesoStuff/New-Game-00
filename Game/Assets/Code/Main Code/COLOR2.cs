@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class COLOR2 : MAIN_GAME_OBJECT_SCRIPT
 {
-    // if you do decide on producing children with this class
     [SerializeField] internal Color defaultColor;
     [SerializeField] internal Color newColor;
 
     // COLOR , TIME , CYCLES , (REF)
+    // old col , new color , duration , cycle , ref if needed
 
     // COLOR FLASH (single and multiple flash(es))
     public IEnumerator flash(Color flashColor)
@@ -120,6 +120,7 @@ public class COLOR2 : MAIN_GAME_OBJECT_SCRIPT
         StartCoroutine(transition(spriterender.color, newColor, transitionDuration));
         yield return null;
     }
+
     public static IEnumerator transition_self(Color newColor, float transitionDuration, SpriteRenderer sprite)
     {
         while (transitionDuration > Time.deltaTime)
@@ -206,35 +207,35 @@ public class COLOR2 : MAIN_GAME_OBJECT_SCRIPT
         yield return null;
     }
     // COLOR BLINKING (FADE IN/OUT OR OTHER COLORS)
-    public void blinking_in_out_self(float transitionDuration)
+    public void flashing_in_out_self(float transitionDuration)
     {
         spriterender.color = new Color(spriterender.color.r, spriterender.color.g, spriterender.color.b, Mathf.PingPong(Time.unscaledTime / transitionDuration, 1));
     }
-    public static void blinking_in_out_self(float transitionDuration, SpriteRenderer sprite)
+    public static void flashing_in_out_self(float transitionDuration, SpriteRenderer sprite)
     {
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, Mathf.PingPong(Time.unscaledTime / transitionDuration, 1));
     }
-    public static void blinking_two_colors_backGround(Color blinkingColor1, Color blinkingColor2)
+    public static void flashing_two_colors_backGround(Color blinkingColor1, Color blinkingColor2)
     {
         Camera.main.backgroundColor = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
-    public static void blinking_two_colors_backGround(Color blinkingColor1, Color blinkingColor2, float transitionDuration)
+    public static void flashing_two_colors_backGround(Color blinkingColor1, Color blinkingColor2, float transitionDuration)
     {
         Camera.main.backgroundColor = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
-    public void blinking_two_colors_self(Color blinkingColor1, Color blinkingColor2)
+    public void flashing_two_colors_self(Color blinkingColor1, Color blinkingColor2)
     {
         spriterender.color = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
-    public static void blinking_two_colors_self(Color blinkingColor1, Color blinkingColor2, SpriteRenderer sprite)
+    public static void flashing_two_colors_self(Color blinkingColor1, Color blinkingColor2, SpriteRenderer sprite)
     {
         sprite.color = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
-    public void blinking_two_colors_self(Color blinkingColor1, Color blinkingColor2, float transitionDuration)
+    public void flashing_two_colors_self(Color blinkingColor1, Color blinkingColor2, float transitionDuration)
     {
         spriterender.color = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
-    public static void blinking_two_colors_self(Color blinkingColor1, Color blinkingColor2, float transitionDuration, SpriteRenderer sprite)
+    public static void flashing_two_colors_self(Color blinkingColor1, Color blinkingColor2, float transitionDuration, SpriteRenderer sprite)
     {
         sprite.color = Color.Lerp(blinkingColor1, blinkingColor2, Mathf.Sin(Time.time));
     }
@@ -259,7 +260,7 @@ public class COLOR2 : MAIN_GAME_OBJECT_SCRIPT
         Camera.main.backgroundColor = Color.black;
         yield return null;
     }
-    public IEnumerator flash_restart_timeUp()
+    public static IEnumerator flash_restart_timeUp()
     {
         Color wall_color = new Color(0.9339623f, 0.5850481f, 0.5850481f, 1);
         Color player_color = new Color(0.4588f, 0.8198f, 0.6941f, 1);
@@ -278,5 +279,58 @@ public class COLOR2 : MAIN_GAME_OBJECT_SCRIPT
         yield return new WaitForSeconds(CONSTANTS.DEFAULT_FLASH_TIME);
         Camera.main.backgroundColor = Color.black;
         yield return null;
+    }
+
+    public static IEnumerator blinking_text(Text textBox, float timer, int cycle)
+    {
+        Color fadeColor = new Color(0, 0, 0, 1);
+        for (int i = 0; i < cycle; i++)
+        {
+            yield return new WaitForSeconds(timer);
+            textBox.color -= fadeColor;
+            yield return new WaitForSeconds(timer);
+            textBox.color += fadeColor;
+        }
+        yield return null;
+    }
+    public IEnumerator blinking_self(float timer, int cycle)
+    {
+        Color fadeColor = new Color(0, 0, 0, 1);
+        for (int i = 0; i < cycle; i++)
+        {
+            yield return new WaitForSeconds(timer);
+            spriterender.color -= fadeColor;
+            yield return new WaitForSeconds(timer);
+            spriterender.color += fadeColor;
+        }
+        yield return null;
+    }
+    public static IEnumerator blinking_self(float timer, int cycle, SpriteRenderer sprite)
+    {
+        Color fadeColor = new Color(0, 0, 0, 1);
+        for (int i = 0; i < cycle; i++)
+        {
+            yield return new WaitForSeconds(timer);
+            sprite.color -= fadeColor;
+            yield return new WaitForSeconds(timer);
+            sprite.color += fadeColor;
+        }
+        yield return null;
+    }
+    public static IEnumerator blinking_Camera(float timer, int cycle)
+    {
+        Color fadeColor = new Color(0, 0, 0, 1);
+        for (int i = 0; i < cycle; i++)
+        {
+            yield return new WaitForSeconds(timer);
+            Camera.main.backgroundColor -= fadeColor;
+            yield return new WaitForSeconds(timer);
+            Camera.main.backgroundColor += fadeColor;
+        }
+        yield return null;
+    }
+    public void resetColor()
+    {
+        spriterender.color = defaultColor;
     }
 }

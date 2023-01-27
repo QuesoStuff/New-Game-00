@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class WallScript_Random : WallScript, I_RANDOM
 {
-
     [SerializeField] internal float xMove;
     [SerializeField] internal float yMove;
     [SerializeField] internal Vector2 travel;
     [SerializeField] internal float speed;
     [SerializeField] internal Color startingColor;
-
     public new void set()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_ITEM;
@@ -33,10 +31,8 @@ public class WallScript_Random : WallScript, I_RANDOM
     {
         transform.Translate(speed * travel * Time.deltaTime);
     }
-
     public void random_direction()
     {
-        // movement being negativ , none , postivve
         xMove = Random.Range(-1, 2);
         yMove = Random.Range(-1, 2);
     }
@@ -44,14 +40,11 @@ public class WallScript_Random : WallScript, I_RANDOM
     {
         speed = Random.Range(-CONSTANTS.MOVE_MAX_ENEMY_SPEED, CONSTANTS.MOVE_MAX_ENEMY_SPEED);
     }
-
     public void randomGenerator()
     {
         random_direction();
         random_speed();
     }
-
-
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
@@ -71,7 +64,6 @@ public class WallScript_Random : WallScript, I_RANDOM
                 xMove = -xMove;
                 yMove = -yMove;
             }
-
             if (xMove == 0 && yMove == -1)
             {
                 xMove = yMove;
@@ -86,7 +78,6 @@ public class WallScript_Random : WallScript, I_RANDOM
                 xMove = yMove;
                 yMove = -yMove;
             }
-
             if (xMove == 1 && yMove == -1)
             {
                 xMove = -xMove;

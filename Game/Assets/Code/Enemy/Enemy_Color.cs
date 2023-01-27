@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Enemy_Color : COLOR
+public class Enemy_Color : COLOR2
 {
     [SerializeField] internal EnemyScript mainScript;
     [SerializeField] internal Color DEFAULT_ENEMY_COLOR;
-
     [SerializeField] internal float opacityDecrementer;
     [SerializeField] internal float RGB_Red_to_White;
     [SerializeField] internal float RGB_Green_to_White;
@@ -18,11 +17,9 @@ public class Enemy_Color : COLOR
     public void setComponent()
     {
         mainScript = GetComponent<EnemyScript>();
-
     }
     public void setRef()
     {
-        // mainScript = (EnemyScript)Resources.Load("enemy").GetComponent<EnemyScript>(); 
     }
     void calculateColor0()
     {
@@ -50,43 +47,21 @@ public class Enemy_Color : COLOR
         setComponent();
         calculateColor0();
         calculateColor1();
-        resetColor();
+        base.resetColor();
         spriterender.enabled = true;
         opacityDecrementer = 0;
-
-
     }
-    /*
-        public IEnumerator enemyFlash()
-        {
-            StartCoroutine(base.flash(Color.white, 3.5f));
-            updateColor();
-            resetColor();
-            yield return null;
-        }
-        */
 
-        // why can't I use subroutine
-    public void whiteFlash()
+
+    public IEnumerator whiteFlash()
     {
         spriterender.color = Color.white;
-        Invoke("updateColor", 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        updateColor();
         updateColor();
         resetColor();
     }
-    /*
-        public IEnumerator whiteFlash()
-        {
-            Debug.Log("HURT");
 
-            Debug.Log(defaultColor);
-            StartCoroutine(base.flash(Color.white, 0.5f));
-            updateColor();
-            resetColor();
-            Debug.Log(defaultColor);
-            yield return null;
-        }
-        */
 
     public void updateColor()
     {

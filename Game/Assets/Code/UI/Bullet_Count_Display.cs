@@ -5,14 +5,8 @@ using UnityEngine.UI;
 
 public class Bullet_Count_Display : GENERIC_UI
 {
-    //[SerializeField] internal _Player_Script playerScript; // in secs
-    //[SerializeField] internal Text textBox;
     [SerializeField] internal int bulletCount;
     [SerializeField] internal Color Color_bulletCount_100;
-
-
-    // Use this for initialization
-
     new void set()
     {
         base.set();
@@ -36,20 +30,16 @@ public class Bullet_Count_Display : GENERIC_UI
     {
         set();
     }
-
-    // Update is called once per frame
     void Update()
     {
         display();
         if (newSaveData == false)
             UI_UPDATE_High_Score();
     }
-
     void UI_UPDATE_High_Score()
     {
         if (bulletCount > saveFile.MAX_BULLET_COUNT && saveFile.MAX_BULLET_COUNT > 0)
         {
-            //newDisplayColor = color.green; DEFAULT IS YELLOW
             newSaveData = true;
             displayColor = newDisplayColor;
         }

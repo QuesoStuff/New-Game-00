@@ -10,14 +10,10 @@ public class CameraPlayerFollow : MonoBehaviour
     [SerializeField] internal float z_CamValue = -10f;
 
     [SerializeField] internal Transform target;
-    [SerializeField] internal bool transition;
-    [SerializeField] internal float t;
-    [SerializeField] internal float fadeDuration;
-    [SerializeField] internal float timeTheFadeStarted;
+    [SerializeField] internal static float fadeDuration;
     [SerializeField] internal int ZOOM;
 
-    [SerializeField] internal Color Color1;
-    [SerializeField] internal Color Color2;
+
 
 
 
@@ -30,19 +26,10 @@ public class CameraPlayerFollow : MonoBehaviour
     {
         setComponent();
         fadeDuration = 4.8f;
-        //timeTheFadeStarted = Time.time;
-        timeTheFadeStarted = Time.time;
-        Color1 = new Color(0.9339623f, 0.5850481f, 0.5850481f, 1); //wall
-        Color2 = new Color(0.238392f, 0.2047437f, 0.4056604f, 0); //background
         ZOOM = 10;
     }
     // Update is called once per frame
-    public void flashingBackGround()
-    {
-        //t = Mathf.PingPong(Time.time, 3.0F) / 3.0F;
-        t = Mathf.PingPong(Time.deltaTime, 3.0F) / 3.0F;
-        Camera.main.backgroundColor = Color.Lerp(Color1, Color2, t);
-    }
+
     public void Awake()
     {
 
@@ -50,71 +37,18 @@ public class CameraPlayerFollow : MonoBehaviour
     public void Start()
     {
         set();
-        ColorWall();
         Camera.main.orthographicSize = ZOOM;
     }
     public void Update()
     {
         Vector3 playerPosition = new Vector3(target.position.x, target.position.y + y_Offset, z_CamValue);
         transform.position = Vector3.Slerp(transform.position, playerPosition, followSpeed * Time.deltaTime);
-        //Camera.main.backgroundColor = Color.Lerp(Color1, Color2, (Time.time) / fadeDuration);
-        // if (fadeDuration > Time.deltaTime)
-        // {
-        //    Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Color2, Time.deltaTime / fadeDuration);
-        //    fadeDuration -= Time.deltaTime;
-        //}
-
-
     }
 
-    public void ColorWall()
-    {
-        Camera.main.backgroundColor = Color1;
-    }
-    public void transitionColor(Color newColor)
-    {
-        //Color1 = Color2;
-        //Color2 = newColor;
-        Color1 = Camera.main.backgroundColor;
-        Color2 = newColor;
-        fadeDuration = 4.8f;
-    }
-    public static IEnumerator transitionColor_No_Update(float fadeDuration, Color oldColor, Color newColor)
-    {
-        while (fadeDuration > Time.deltaTime)
-        {
-            Camera.main.backgroundColor = Color.Lerp(oldColor, newColor, Time.deltaTime / fadeDuration);
-            fadeDuration -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        Camera.main.backgroundColor = newColor;
-        yield return null;
-    }
 
-    public static IEnumerator transitionColor_Background_No_Update(float fadeDuration, Color newColor)
-    {
 
-        fadeDuration = 4.8f;
-        while (fadeDuration > Time.deltaTime)
-        {
-            Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, newColor, Time.deltaTime / fadeDuration);
-            fadeDuration -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
 
-    }
-    public IEnumerator transitionColor_No_Update(Color newColor)
-    {
-        Color1 = Camera.main.backgroundColor;
-        Color2 = newColor;
-        fadeDuration = 4.8f;
-        while (fadeDuration > Time.deltaTime)
-        {
-            Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Color2, Time.deltaTime / fadeDuration);
-            fadeDuration -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
+
 }
 
 

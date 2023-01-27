@@ -4,54 +4,40 @@ using UnityEngine;
 
 public static class Random_Level_Gen
 {
-
     [SerializeField] internal static GameObject enemy;
     [SerializeField] internal static GameObject item;
     [SerializeField] internal static GameObject wall;
     [SerializeField] internal static GameObject wall_moving;
     [SerializeField] internal static GameObject door;
     [SerializeField] internal static Object explosion_ref;
-
-
-
     [SerializeField] internal static int enemy_Count;
     [SerializeField] internal static int item_Count;
     [SerializeField] internal static int wall_Count;
     [SerializeField] internal static int door_Count;
     [SerializeField] internal static int total_Count;
-
     [SerializeField] internal static float enemy_timer;
     [SerializeField] internal static float item_timer;
     [SerializeField] internal static float wall_timer;
     [SerializeField] internal static float door_timer;
-
     [SerializeField] internal static Transform player_Transform;
-
     [SerializeField] internal static Vector3 player_position;
-
     [SerializeField] internal static Vector3 enemy_position;
     [SerializeField] internal static Vector3 item_position;
     [SerializeField] internal static Vector3 wall_position;
     [SerializeField] internal static Vector3 door_position;
-
-
     [SerializeField] internal static int TOTAL_SPAWN_OBJECT_COUNT = 120;
     [SerializeField] internal static float ENEMY_TIMER_START = 5.0f;
     [SerializeField] internal static float ENEMY_TIMER_MINUS = 1.75F;
     [SerializeField] internal static float MIN_TIME_ENEMY_SPAWN = 3f;
     [SerializeField] internal static float ENEMY_TIME_BOUND = 7f;
-
     [SerializeField] internal static float ITEM_TIMER_START = 0.01f;
     [SerializeField] internal static float ITEM_TIMER_PLUS = 3.5f;
     [SerializeField] internal static float MAX_TIME_ITEM_SPAWN = 100.3f;
     [SerializeField] internal static float ITEM_TIME_BOUND = 80.3f;
-
     [SerializeField] internal static float WALL_TIMER_START = 12f;
     [SerializeField] internal static float WALL_TIMER_MINUS = 0.05f;
     [SerializeField] internal static float MIN_TIME_WALL_SPAWN = 5.3f;
     [SerializeField] internal static float WALL_TIME_BOUND = 2.3f;
-
-
     [SerializeField] internal static float DOOR_TIMER_START = 35f;
     [SerializeField] internal static float DOOR_TIMER_PLUS = 40;
     [SerializeField] internal static float MAX_TIME_DOOR_SPAWN = 600;
@@ -66,8 +52,6 @@ public static class Random_Level_Gen
         door_timer = DOOR_TIMER_START;
 
     }
-    // Start is called before the first frame update
-
     public static void setComponent()
     {
         enemy = (GameObject)Resources.Load("R_Enemy");
@@ -78,14 +62,6 @@ public static class Random_Level_Gen
         explosion_ref = Resources.Load("explosion_dash");
 
     }
-
-
-
-
-
-
-    // Update is called once per frame
-
     public static void change_Time_enemy()
     {
         enemy_timer -= ENEMY_TIMER_MINUS;
@@ -104,7 +80,6 @@ public static class Random_Level_Gen
         if (enemy_timer < MIN_TIME_WALL_SPAWN)
             enemy_timer = WALL_TIME_BOUND;
     }
-
     public static void change_Time_door()
     {
         door_timer += DOOR_TIMER_PLUS;
@@ -118,7 +93,6 @@ public static class Random_Level_Gen
         change_Time_item();
         change_Time_enemy();
     }
-
     public static IEnumerator spawnn_all()
     {
         while (total_Count < TOTAL_SPAWN_OBJECT_COUNT)
@@ -141,13 +115,11 @@ public static class Random_Level_Gen
             {
                 GameObject new_Wall = Object.Instantiate(wall_moving, wall_position, Quaternion.identity);
                 EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
-
             }
             else
             {
                 GameObject new_Wall = Object.Instantiate(wall, wall_position, Quaternion.identity);
                 EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
-
             }
             wall_Count++;
             total_Count++;
@@ -158,7 +130,6 @@ public static class Random_Level_Gen
                 item_position = randomSpawn();
             GameObject new_item = Object.Instantiate(item, item_position, Quaternion.identity);
             EXPLOSION.explosionCreateConsant(explosion_ref, item_position, Color.white);
-
             item_Count++;
             total_Count++;
             yield return new WaitForSeconds(door_timer);
@@ -168,7 +139,6 @@ public static class Random_Level_Gen
                 door_position = randomSpawn();
             GameObject new_door = Object.Instantiate(door, door_position, Quaternion.identity);
             EXPLOSION.explosionCreateConsant(explosion_ref, door_position, Color.white);
-
             new_door.transform.rotation = Random.rotation;
             door_Count++;
             total_Count++;
@@ -187,7 +157,6 @@ public static class Random_Level_Gen
                 enemy_position = rangedSpawn_target();
             GameObject new_Enemy = Object.Instantiate(enemy, enemy_position, Quaternion.identity);
             EXPLOSION.explosionCreateConsant(explosion_ref, enemy_position, Color.white);
-
             enemy_Count++;
             total_Count++;
             change_Time_enemy();
@@ -208,7 +177,6 @@ public static class Random_Level_Gen
             {
                 GameObject new_Wall = Object.Instantiate(wall_moving, wall_position, Quaternion.identity);
                 EXPLOSION.explosionCreateConsant(explosion_ref, wall_position, Color.white);
-
             }
             else
             {
@@ -218,7 +186,6 @@ public static class Random_Level_Gen
             wall_Count++;
             total_Count++;
             change_Time_wall();
-
         }
     }
 

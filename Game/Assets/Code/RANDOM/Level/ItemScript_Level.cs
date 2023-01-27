@@ -22,7 +22,7 @@ public class ItemScript_Level : ItemScript, I_LEVEL
     // inverse relationship with score (the higher one the lower the other)
     public void level_score_select()
     {
-        interval = CONSTANTS.ITEM_MAXIMUM_SCORE / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.ITEM_MAXIMUM_SCORE / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
         scoreAdded   = Random.Range(0 * interval , 1 * interval);
         else if (startingColor == Color.green)
@@ -36,7 +36,7 @@ public class ItemScript_Level : ItemScript, I_LEVEL
     }
     public void level_health_select()
     {
-        interval = CONSTANTS.ITEM_MAXIMUM_SCORE / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.ITEM_MAXIMUM_SCORE / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.white)
         HP_Added   = Random.Range(0 * interval , 1 * interval);
         else if (startingColor == Color.black)

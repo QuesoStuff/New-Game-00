@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Color : COLOR
+public class Player_Color : COLOR2
 {
     [SerializeField] internal _Player_Script mainScript;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_HURT;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_DASH;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_COLLISION;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_HP_UP;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_BIG_SHOOT;
-    [SerializeField] internal Color DEFAULT_PLAYER_COLOR_BIG_SHOOT_READY;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_HURT;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_DASH;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_COLLISION;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_HP_UP;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_BIG_SHOOT;
+    [SerializeField] static internal Color DEFAULT_PLAYER_COLOR_BIG_SHOOT_READY;
 
     void setComponent()
     {

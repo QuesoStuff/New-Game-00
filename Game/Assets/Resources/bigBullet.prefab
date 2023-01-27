@@ -165,7 +165,7 @@ MonoBehaviour:
   speed: 0
   x: 0
   y: 0
-  bullet_damge: 6
+  bulletDamage: 6
   currColor: {r: 0, g: 0, b: 0, a: 0}
   colorSpeed_0: {r: 0, g: 0, b: 0, a: 0}
   colorSpeed_1: {r: 0, g: 0, b: 0, a: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   explosionRef2: {fileID: 1687099552451913201, guid: 119a313bb18aae84f96faf6a55385711, type: 3}
   explosionRef3: {fileID: 0}
   explosionRef4: {fileID: 0}
+  Sound: {fileID: 0}
   bulletSpeed: {x: 0, y: 0}
   col: {fileID: 0}
 --- !u!82 &-7753194076372827979
@@ -288,4 +289,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio_array:
   - {fileID: 8300000, guid: a7360259f16a6f7478a1b0d5f253fb14, type: 3}
-  audio: {fileID: 0}
+  audio_current: {fileID: 0}

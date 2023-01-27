@@ -12,7 +12,7 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
     [SerializeField] internal Player_Color Color;
     [SerializeField] internal Player_Controller Controller;
     [SerializeField] internal Player_Input INPUT;
-    [SerializeField] internal Player_Sound SFX;
+    [SerializeField] internal Player_Sound playerSound;
 
 
     [SerializeField] internal int killCount;
@@ -22,19 +22,13 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
 
     void setComponent()
     {
-
         Collision = GetComponent<Player_Collision>();
         HP = GetComponent<Player_Health>();
         Color = GetComponent<Player_Color>();
         Controller = GetComponent<Player_Controller>();
         INPUT = GetComponent<Player_Input>();
-        SFX = GetComponent<Player_Sound>();
+        playerSound = GetComponent<Player_Sound>();
     }
-
-
-
-
-
     public new void set()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_PLAYER;
@@ -42,39 +36,20 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
         base.set();
         Collision.set();
         HP.set();
-        //Score.set();
-        //ScoreManager.set();
+        Controller.set();
         Color.set();
         INPUT.set();
-        SFX.set();
+        playerSound.set();
         killCount = 0;
         total_Distance_traveled = 0;
         bullet_shot_Count = 0;
     }
-
-    // Gets called before Start()
     void Awake()
     {
-        // somne Gameplay stuff
-
-        Controller.set();
         set();
     }
-    // Start is called before the first frame update
     public void Start()
     {
-
-    }
-    void wrap_around() // for the INF room
-    {
-        if (transform.position.x > CONSTANTS.TESTROOM_X_AXIS_MAX)
-            transform.position = new Vector2(CONSTANTS.TESTROOM_X_AXIS_MIN, transform.position.y);
-        else if (transform.position.x < CONSTANTS.TESTROOM_X_AXIS_MIN)
-            transform.position = new Vector2(CONSTANTS.TESTROOM_X_AXIS_MAX, transform.position.y);
-        if (transform.position.y > CONSTANTS.TESTROOM_Y_AXIS_MAX)
-            transform.position = new Vector2(transform.position.x, CONSTANTS.TESTROOM_Y_AXIS_MIN);
-        else if (transform.position.y < CONSTANTS.TESTROOM_Y_AXIS_MIN)
-            transform.position = new Vector2(transform.position.x, CONSTANTS.TESTROOM_Y_AXIS_MAX);
 
     }
 
@@ -90,10 +65,8 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
             Controller.playerDash();
             Controller.ultimate_Player_Shooting();
             Controller.shooting();
-            //INPUT.input_charged_Shot_Ready();
             Controller.charged_Shooting();
             Controller.RecordDistance();
-            //wrap_around();
             // TESTING SPECIAL ATTACKS
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -125,7 +98,7 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_TELEPORT))
         {
             Collision.collisionWith_Door(other);
-            SFX.audioTeleport();
+            playerSound.audioTeleport();
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -133,7 +106,7 @@ public class _Player_Script : MAIN_GAME_OBJECT_SCRIPT
         if (collision.gameObject.tag == CONSTANTS.COLLISION_TAG_ENEMY)
         {
             Collision.collisionWith_Enemy(collision);
-            SFX.audioCollision();
+            playerSound.audioCollision();
         }
         if (collision.gameObject.tag == CONSTANTS.COLLISION_TAG_WALL)
         {

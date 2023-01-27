@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1796613814326425956}
   - component: {fileID: 6458240571934168236}
   - component: {fileID: 3789738467301910198}
-  - component: {fileID: 8743995758281502761}
+  - component: {fileID: 6247582927263564174}
   m_Layer: 0
   m_Name: R_Enemy
   m_TagString: enemy
@@ -240,6 +240,8 @@ MonoBehaviour:
   animator: {fileID: 1256234857304187581}
   rb2d: {fileID: 2204013804561354473}
   spriterender: {fileID: 6704022514195619264}
+  scale_X: 0
+  scale_Y: 0
   flashTime: 0.5
   timeTheFadeStarted: 0.0003008
   fadeDuration: 4.8
@@ -279,6 +281,8 @@ MonoBehaviour:
   animator: {fileID: 1256234857304187581}
   rb2d: {fileID: 2204013804561354473}
   spriterender: {fileID: 6704022514195619264}
+  scale_X: 0
+  scale_Y: 0
   mainScript: {fileID: 0}
 --- !u!114 &1796613814326425956
 MonoBehaviour:
@@ -308,6 +312,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb2d: {fileID: 0}
   spriterender: {fileID: 0}
+  scale_X: 0
+  scale_Y: 0
   Controller: {fileID: 0}
   Health: {fileID: 0}
   Color: {fileID: 0}
@@ -412,7 +418,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8743995758281502761
+--- !u!114 &6247582927263564174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -421,9 +427,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9150384563979876283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a021e0853ad104c9a841255552f8a6, type: 3}
+  m_Script: {fileID: 11500000, guid: c245a8757fbde35438e9868cde2f3993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audio_array:
   - {fileID: 8300000, guid: 119841b5b8af8404ebca059249034808, type: 3}
-  audio: {fileID: 3789738467301910198}
+  audion_current: {fileID: 0}

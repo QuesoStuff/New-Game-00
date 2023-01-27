@@ -21,7 +21,7 @@ public class Enemy_Collision : MAIN_GAME_OBJECT_SCRIPT
 
     public void collisionWith_Bullet(Collider2D other)
     {
-        int damage = other.gameObject.GetComponent<BulletScript>().bullet_damge;
+        int damage = other.gameObject.GetComponent<BulletScript>().bulletDamage;
         mainScript.Health.HP_damage(damage);
     }
     public void collisionWith_Door(Collider2D other)
@@ -35,12 +35,12 @@ public class Enemy_Collision : MAIN_GAME_OBJECT_SCRIPT
         Vector2 direction = (obj.transform.position - transform.position).normalized;
         rb2d.AddForce(-10000 * direction);
         Color color = obj.GetComponent<SpriteRenderer>().color;
-        mainScript.Color.flash( color , 0.92f);
-
+        // mainScript.Color.flash( color , 0.92f);
+        COLOR2.flash(color , 0.92f , spriterender);
     }
     public void collisionWith_Wall(Collision2D collision)
     {
-        //spriterender.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+        spriterender.color = collision.gameObject.GetComponent<SpriteRenderer>().color;
         rb2d.velocity = Vector2.zero;
         mainScript.Controller.speed /= 2;
         mainScript.Controller.Invoke("resetSpeed", 0.92f);

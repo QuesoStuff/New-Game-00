@@ -5,55 +5,27 @@ using UnityEngine;
 public class DoorScript : MAIN_GAME_OBJECT_SCRIPT
 {
     [SerializeField] internal Transform teleport;
-
-    // regarding to animation of the Door
     [SerializeField] internal float opacityMeter;
     [SerializeField] internal float opacitySpeedFactor;
-
     [SerializeField] internal float opacityMeterShift;
     [SerializeField] internal bool increaseOpacity;
     [SerializeField] internal Color spriteColor;
+    [SerializeField] static internal float transitionDuration = 2.5f;
 
 
-
-    // Start is called before the first frame update
     public new void set()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_TELEPORT;
         base.set();
-        // tag of the object
-        // Unity Fields
-        // other Fields
-        opacityMeter = 0;
-        opacityMeterShift = 0.001f;
-        increaseOpacity = true;
     }
     void Start()
     {
         set();
     }
-    // Update is called once per frame 
     void Update()
     {
-        adjustOpacity();
+        COLOR2.flashing_in_out_self(transitionDuration, spriterender );
     }
 
 
-
-    void adjustOpacity()
-    {
-        if (opacityMeter >= 1)
-            increaseOpacity = false;
-        else if (opacityMeter <= 0)
-            increaseOpacity = true;
-
-        if (increaseOpacity == true)
-            opacityMeter += opacityMeterShift;
-        else
-            opacityMeter -= opacityMeterShift;
-
-        spriteColor = spriterender.color;
-        spriteColor.a = opacityMeter;
-        spriterender.color = spriteColor;
-    }
 }

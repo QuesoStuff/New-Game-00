@@ -13,20 +13,12 @@ public class GENERIC_UI : MonoBehaviour
 
     [SerializeField] internal _Player_Script playerScript; // in secs
 
-
-
-
-
-
-
-    // Use this for initialization
     public void setComponent()
     {
         textBox = GetComponent<Text>();
         playerScript = GameObject.Find(CONSTANTS.COLLISION_TAG_PLAYER).GetComponent<_Player_Script>();
         saveFile = SaveManager.saveFile;
     }
-
     public void setColor()
     {
         displayColor = Color.white;
@@ -43,9 +35,5 @@ public class GENERIC_UI : MonoBehaviour
         setColor();
         setTextColor(displayColor);
     }
-    //void Start()
-    //{set();}
 
-    //void Update()
-    //{display();}
 }

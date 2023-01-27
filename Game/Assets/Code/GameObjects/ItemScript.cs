@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
 {
-    // UNITY FIELD OBJECTS
     [SerializeField] internal int scoreAdded;
     [SerializeField] internal int HP_Added;
     [SerializeField] internal float positionOffset;
     [SerializeField] internal Object explosionRef;
     [SerializeField] internal BoxCollider2D col;
+    [SerializeField] internal SOUND Sound;
 
-    //[SerializeField] internal RespawnScript respawnScript;
-
-
-
-    // SET & CONSTRUCTOR
     public void setRef()
     {
         explosionRef = Resources.Load("explosion_item");
-        //respawnScript = GameObject.Find(CONSTANTS.COLLISION_TAG_REPEAT).GetComponent<RespawnScript>();
         col = GetComponent<BoxCollider2D>();
+        Sound =  GetComponent<SOUND>();
     }
     public new void set()
     {
@@ -32,21 +27,19 @@ public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
         positionOffset = CONSTANTS.RESPAWN_ITEM_IF_WALL_COLLISION;
         this.scoreAdded = CONSTANTS.SCORE_DEFAULT_INCREMENT;
         this.HP_Added = CONSTANTS.HP_DEFAULT_HEALTH;
+        Sound.set();
     }
     void Start()
     {
         set();
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_PLAYER))
         {
-            GetComponent<AudioSource>().Play();
+            Sound.audio_play();
             EXPLOSION.explosionCreate(explosionRef, transform.position, spriterender.color);
-            //Destroy(gameObject,  GetComponent<AudioSource>().clip.length);
             Destroy(gameObject, 0.3f);
-
         }
         if (other.CompareTag(CONSTANTS.COLLISION_TAG_WALL))
         {
@@ -58,10 +51,8 @@ public class ItemScript : MAIN_GAME_OBJECT_SCRIPT
             transform.position = offsetVector;
         }
     }
-
     void OnDestroy()
     {
-        //respawnScript.itemCreatedCount--;
         Random_Level_Gen.item_Count--;
     }
 }

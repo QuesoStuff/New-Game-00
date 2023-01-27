@@ -40,8 +40,10 @@ public class Clock : MonoBehaviour
             CurrentTime -= Time.deltaTime;
         }
         else
-            // may not be possible
-            StartCoroutine(Level_Controller_Simple.timer_end_Restart());
+        {
+            StartCoroutine(COLOR2.flash_restart_timeUp());
+            Level_Controller_Simple.timer_end_Restart();
+        }
     }
     public void clock_timer_update()
     {
@@ -50,7 +52,9 @@ public class Clock : MonoBehaviour
             CurrentTime += Time.deltaTime;
         }
         else
-            // may not be possible
-            StartCoroutine(Level_Controller_Simple.timer_end_Restart());
+        {
+            StartCoroutine(COLOR2.flash_restart_timeUp());
+            Level_Controller_Simple.timer_end_Restart();
+        }
     }
 }

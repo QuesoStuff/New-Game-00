@@ -10,7 +10,8 @@ public class WallScript_Level : WallScript, I_LEVEL
     [SerializeField] internal Vector2 travel;
     [SerializeField] internal float speed;
     [SerializeField] internal int interval;
-
+    [SerializeField] internal bool flashing = false;
+    [SerializeField] static internal float transitionDuration = 2.5f;
     [SerializeField] internal Color startingColor;
 
     public new void set()
@@ -21,6 +22,7 @@ public class WallScript_Level : WallScript, I_LEVEL
         base.set();
         gameObject.tag = CONSTANTS.COLLISION_TAG_WALL;
         level_generator();
+        //flashing = false;
     }
     public new void Start()
     {
@@ -31,6 +33,9 @@ public class WallScript_Level : WallScript, I_LEVEL
     public void Update()
     {
         transform.Translate(speed * travel * Time.deltaTime);
+        if (flashing)
+            COLOR2.flashing_in_out_self(transitionDuration, spriterender);
+
     }
 
     public void level_generator()
@@ -40,7 +45,7 @@ public class WallScript_Level : WallScript, I_LEVEL
 
     public void level_speed_select()
     {
-        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
             speed = Random.Range(0 * interval, 1 * interval);
         else if (startingColor == Color.green)
@@ -54,7 +59,7 @@ public class WallScript_Level : WallScript, I_LEVEL
     }
     public void level_collision_select()
     {
-        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
             xMove = speed;
         else if (startingColor == Color.green)

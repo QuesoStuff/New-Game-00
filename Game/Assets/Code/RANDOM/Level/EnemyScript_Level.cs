@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyScript_Level : EnemyScript , I_LEVEL
+public class EnemyScript_Level : EnemyScript // , I_LEVEL
 {
+    /*
     [SerializeField] internal Color startingColor;
     [SerializeField] internal int interval;
 
 
-    [SerializeField] internal Color red = new Color(1,0,0,1);
-    [SerializeField] internal Color green = new Color(0,1,0,1);
-    [SerializeField] internal Color blue = new Color(0,0,1,1);
-    [SerializeField] internal Color black = new Color(0,0,0,1);
-    [SerializeField] internal Color white = new Color(1,1,1,1);
+    [SerializeField] internal Color red = new Color(1, 0, 0, 1);
+    [SerializeField] internal Color green = new Color(0, 1, 0, 1);
+    [SerializeField] internal Color blue = new Color(0, 0, 1, 1);
+    [SerializeField] internal Color black = new Color(0, 0, 0, 1);
+    [SerializeField] internal Color white = new Color(1, 1, 1, 1);
 
 
 
@@ -27,65 +28,65 @@ public class EnemyScript_Level : EnemyScript , I_LEVEL
         level_generator();
     }
 
-    
+
     public void level_move_select()
     {
-        interval = CONSTANTS.ENEMY_MOVE_COUNT / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.ENEMY_MOVE_COUNT / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
-        movementConfiguration = Random.Range(0 * interval , 1 * interval);
+            movementConfiguration = Random.Range(0 * interval, 1 * interval);
         else if (startingColor == Color.green)
-        movementConfiguration = Random.Range(1 * interval , 2 * interval);
+            movementConfiguration = Random.Range(1 * interval, 2 * interval);
         else if (startingColor == Color.blue)
-        movementConfiguration = Random.Range(2 * interval , 3 * interval);
+            movementConfiguration = Random.Range(2 * interval, 3 * interval);
         else if (startingColor == Color.black)
-        movementConfiguration = Random.Range(3 * interval , 4 * interval);
+            movementConfiguration = Random.Range(3 * interval, 4 * interval);
         else if (startingColor == Color.white)
-        movementConfiguration = Random.Range(4 * interval , 5 * interval);
+            movementConfiguration = Random.Range(4 * interval, 5 * interval);
 
         Moves.chooseMovement(movementConfiguration);
     }
     public void level_health_select()
     {
-        
-        interval = CONSTANTS.ENEMY_HP_MAX / CONSTANTS.COLOR_CHOICES;
+
+        interval = CONSTANTS.ENEMY_HP_MAX / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
-        Health.HP  = Random.Range(0 * interval , 1 * interval);
+            Health.HP = Random.Range(0 * interval, 1 * interval);
         else if (startingColor == Color.green)
-        Health.HP  = Random.Range(1 * interval , 2 * interval);
+            Health.HP = Random.Range(1 * interval, 2 * interval);
         else if (startingColor == Color.blue)
-        Health.HP  = Random.Range(2 * interval , 3 * interval);
+            Health.HP = Random.Range(2 * interval, 3 * interval);
         else if (startingColor == Color.black)
-        Health.HP  = Random.Range(3 * interval , 4 * interval);
+            Health.HP = Random.Range(3 * interval, 4 * interval);
         else if (startingColor == Color.white)
-        Health.HP  = Random.Range(4 * interval , 5 * interval);
+            Health.HP = Random.Range(4 * interval, 5 * interval);
     }
     public void level_damage_select()
     {
-        interval = CONSTANTS.ENEMY_DAMAGE_MAX / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.ENEMY_DAMAGE_MAX / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
-        Health.damageToPlayer  = Random.Range(0 * interval , 1 * interval);
+            Health.damageToPlayer = Random.Range(0 * interval, 1 * interval);
         else if (startingColor == Color.green)
-        Health.damageToPlayer  = Random.Range(1 * interval , 2 * interval);
+            Health.damageToPlayer = Random.Range(1 * interval, 2 * interval);
         else if (startingColor == Color.blue)
-        Health.damageToPlayer  = Random.Range(2 * interval , 3 * interval);
+            Health.damageToPlayer = Random.Range(2 * interval, 3 * interval);
         else if (startingColor == Color.black)
-        Health.damageToPlayer  = Random.Range(3 * interval , 4 * interval);
+            Health.damageToPlayer = Random.Range(3 * interval, 4 * interval);
         else if (startingColor == Color.white)
-        Health.damageToPlayer  = Random.Range(4 * interval , 5 * interval);
+            Health.damageToPlayer = Random.Range(4 * interval, 5 * interval);
     }
     public void level_speed_select()
     {
-        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / CONSTANTS.COLOR_CHOICES;
+        interval = CONSTANTS.MOVE_MAX_ENEMY_SPEED / 5; //CONSTANTS.COLOR_CHOICES;
         if (startingColor == Color.red)
-        Controller.speed   = Random.Range(0 * interval , 1 * interval);
+            Controller.speed = Random.Range(0 * interval, 1 * interval);
         else if (startingColor == Color.green)
-        Controller.speed   = Random.Range(1 * interval , 2 * interval);
+            Controller.speed = Random.Range(1 * interval, 2 * interval);
         else if (startingColor == Color.blue)
-        Controller.speed   = Random.Range(2 * interval , 3 * interval);
+            Controller.speed = Random.Range(2 * interval, 3 * interval);
         else if (startingColor == Color.black)
-        Controller.speed   = Random.Range(3 * interval , 4 * interval);
+            Controller.speed = Random.Range(3 * interval, 4 * interval);
         else if (startingColor == Color.white)
-        Controller.speed   = Random.Range(4 * interval , 5 * interval);
+            Controller.speed = Random.Range(4 * interval, 5 * interval);
     }
 
     public void level_generator()
@@ -142,6 +143,6 @@ public class EnemyScript_Level : EnemyScript , I_LEVEL
 
 
 
-
+*/
 
 }

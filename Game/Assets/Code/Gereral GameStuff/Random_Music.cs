@@ -22,9 +22,9 @@ public class Random_Music : SOUND
     void Start()
     {
         set();
-        if (!audion_current.playOnAwake)
-        audio_play_music_random();
-        
+        if (!audio_current.playOnAwake)
+            audio_play_music_random();
+
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class Random_Music : SOUND
     }
     public void audio_music_player()
     {
-        if (!audion_current.isPlaying)
+        if (!audio_current.isPlaying)
         {
             audio_play_music_random();
             if (not_first_track == true)
@@ -54,19 +54,24 @@ public class Random_Music : SOUND
         float R = randomColorValue();
         float G = randomColorValue();
         float B = randomColorValue();
-        //camColor.transitionColor(new Color(R, G, B, 1));
-        StartCoroutine(CameraPlayerFollow.transitionColor_Background_No_Update(4.0f, new Color(R, G, B, 1)));
-
+        StartCoroutine(COLOR2.transition_backGround(new Color(R, G, B, 1) , CameraPlayerFollow.fadeDuration));
+    }
+    public void audio_play_inRange(int start, int end, AudioClip[] audioCollection)
+    {
+        audio_current.clip = audioCollection[Random.Range(start, end)];
+        audio_current.Play();
     }
     public void audio_play_music_random()
     {
-        audion_current.clip = audio_array[Random.Range(0, audio_array.Length)];
-        audion_current.Play();
+        audio_play_inRange(0, audio_array.Length, audio_array);
+        //audio_current.clip = audio_array[Random.Range(0, audio_array.Length)];
+        //audio_current.Play();
     }
     public void audio_play_menu_random()
     {
-        audion_current.clip = otherGameMusic[Random.Range(0, otherGameMusic.Length)];
-        audion_current.Play();
+        audio_play_inRange(0, otherGameMusic.Length, otherGameMusic);
+        //audio_current.clip = otherGameMusic[Random.Range(0, otherGameMusic.Length)];
+        //audio_current.Play();
     }
 }
 

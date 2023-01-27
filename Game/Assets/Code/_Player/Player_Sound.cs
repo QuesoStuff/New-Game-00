@@ -6,13 +6,10 @@ using UnityEngine;
 public class Player_Sound : SOUND
 {
     [SerializeField] internal _Player_Script mainScript;
-    [SerializeField] internal AudioClip[] soundtrack;
-    [SerializeField] internal AudioSource playAudio;
 
     public new void setComponent()
     {
         mainScript = GetComponent<_Player_Script>();
-        //audio = GetComponent<AudioSource>();
     }
     public new void set()
     {

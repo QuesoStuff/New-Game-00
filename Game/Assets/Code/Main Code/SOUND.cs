@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class SOUND : MonoBehaviour
 {
-    // if you do decide on producing children with this class
     [SerializeField] internal AudioClip[] audio_array;
-    [SerializeField] internal AudioSource audion_current;
+    [SerializeField] internal AudioSource audio_current;
 
     public void setComponent()
     {
-       audion_current = GetComponent<AudioSource>();
+        audio_current = GetComponent<AudioSource>();
     }
     public void set()
     {
@@ -19,7 +18,11 @@ public class SOUND : MonoBehaviour
     }
     public void audio_play(int index)
     {
-        audion_current.clip = audio_array[index];
-        audion_current.Play();
+        audio_current.clip = audio_array[index];
+        audio_current.Play();
+    }
+    public void audio_play()
+    {
+        audio_play(0);
     }
 }

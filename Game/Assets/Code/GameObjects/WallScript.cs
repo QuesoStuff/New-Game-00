@@ -5,7 +5,6 @@ using UnityEngine;
 public class WallScript : MAIN_GAME_OBJECT_SCRIPT
 {
     [SerializeField] internal Color originalColor;
-
     public new void set()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_WALL;
@@ -20,13 +19,9 @@ public class WallScript : MAIN_GAME_OBJECT_SCRIPT
     {
         set();
         resetColor();
-        //COLOR_STATIC.setSpriteRenderColor(ref spriterender , originalColor);
     }
-
-    // THIS IS LAZY I SHOULD NOT BE DOING THIS
-        void Update()
+    void Update()
     {
         gameObject.tag = CONSTANTS.COLLISION_TAG_WALL;
     }
-
 }

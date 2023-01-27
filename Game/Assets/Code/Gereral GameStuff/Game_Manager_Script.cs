@@ -26,7 +26,7 @@ public class Game_Manager_Script : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath); C:\Users\jaf13006\AppData\LocalLow
     }
 
     // Update is called once per frame
